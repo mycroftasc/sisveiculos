@@ -5,11 +5,20 @@
  */
 package Model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  *
  * @author jean.leal
  */
+@Entity
 public class B_Manutencao {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private Integer tipo;
     private String nome;
     private String descricao;
@@ -34,6 +43,14 @@ public class B_Manutencao {
         this.setValorMaoDeObra(man.valorMaoDeObra);
         this.setValorPeca(man.valorPeca);
         this.setValorTotal(man.valorTotal);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Integer getTipo() {

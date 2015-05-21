@@ -5,11 +5,20 @@
  */
 package Model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  *
  * @author jean.leal
  */
+@Entity
 public class B_Veiculo {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private Integer tipo;
     private String marca;
     private String modelo;
@@ -31,6 +40,14 @@ public class B_Veiculo {
         this.setQuilometragem(veic.getQuilometragem());
         this.setCor(veic.getCor());
         this.setPlaca(veic.getPlaca());
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Integer getTipo() {
