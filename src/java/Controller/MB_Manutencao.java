@@ -37,7 +37,7 @@ public class MB_Manutencao {
         } else {
             B_Manutencao v = new B_Manutencao(man);
             BD_Manutencao bdMan = new BD_Manutencao();
-            bdMan.salvar(this.man);
+            bdMan.salvar(v);
             
             //this.limpaCampos();
             this.edit = false;

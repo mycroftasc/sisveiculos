@@ -19,6 +19,7 @@ public class B_Manutencao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    
     private Integer tipo;
     private String nome;
     private String descricao;
