@@ -26,6 +26,9 @@ public class B_TipoVeiculo {
         this.nome = nome;
     }
 
+    public B_TipoVeiculo() {
+    }
+    
     public Integer getId() {
         return id;
     }

@@ -26,6 +26,9 @@ public class B_MarcaVeiculo {
         this.nome = nome;
     }
 
+    public B_MarcaVeiculo() {
+    }
+    
     public Integer getId() {
         return id;
     }

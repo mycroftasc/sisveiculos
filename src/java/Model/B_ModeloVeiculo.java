@@ -29,6 +29,9 @@ public class B_ModeloVeiculo {
         this.descricao = descricao;
     }
 
+    public B_ModeloVeiculo() {
+    }
+    
     public Integer getId() {
         return id;
     }

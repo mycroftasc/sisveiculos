@@ -36,7 +36,7 @@ public class B_Usuario {
         this.email = email;
         this.senha = senha;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -61,7 +61,6 @@ public class B_Usuario {
         this.dataNascimento = dataNascimento;
     }
 
-
     public String getSexo() {
         return sexo;
     }
@@ -85,5 +84,6 @@ public class B_Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
     
 }

@@ -34,7 +34,7 @@ public class MB_Veiculo {
             //this.limpaCampos();
             this.edit = false;
         } else {
-            B_Veiculo v = new B_Veiculo(this.veic.getId(), this.veic.getPlaca(), this.veic.getIdUsuario(), this.veic.getIdModelo());
+            B_Veiculo v = new B_Veiculo(this.veic.getId(), 1, 1, 1, this.veic.getAnoFabricacao(), this.veic.getAnoModelo(), this.veic.getKm(), this.veic.getCor(), this.veic.getPlaca(), 1);
             BD_Veiculo ve = new BD_Veiculo();
             ve.salvar(v);
             //this.limpaCampos();

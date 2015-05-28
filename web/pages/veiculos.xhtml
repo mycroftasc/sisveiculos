@@ -60,26 +60,26 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Ano de Fabricação</label>
-                                        <input class="form-control" type="number" min="1969" max="2015"/>
+                                        <h:inputText class="form-control" value="#{mbVeic.veic.anoFabricacao}" />
                                     </div>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Ano do Modelo</label>
-                                        <input class="form-control" type="number" min="1969" max="2015"/>
+                                        <h:inputText class="form-control" value="#{mbVeic.veic.anoModelo}" />
                                     </div>
                                     <div class="form-group">
                                         <label>Quilometragem</label>
-                                        <input class="form-control" type="number" min="0.1" step="0.1"/>
+                                        <h:inputText class="form-control" value="#{mbVeic.veic.km}" />
                                     </div>
                                     <div class="form-group">
                                         <label>Cor</label>
-                                        <input class="form-control" type="color"/>
+                                        <h:inputText class="form-control" value="#{mbVeic.veic.cor}" />
                                     </div>
                                     <div class="form-group">
                                         <label>Placa</label>
-                                        <input class="form-control" type="text" pt:pattern="[]{3}[A-Z]{4}"/>
+                                        <h:inputText class="form-control" value="#{mbVeic.veic.placa}" />
                                     </div>
                                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
@@ -100,12 +100,12 @@
                                 </div>
                                 <div class="col-lg-6" align="right">
                                     <div class="form-group">
-                                        <button type="reset" class="btn btn-warning">Limpar</button>
+                                        <h:commandButton pt:type="reset" class="btn btn-warning" value="Limpar"></h:commandButton>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Enviar</button>    
+                                        <h:commandButton class="btn btn-success" pt:data-toggle="modal" pt:data-target="#myModal" value="Enviar" action="#{mbVeic.cadastraEeditaVeiculo()}"></h:commandButton>   
                                     </div>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
