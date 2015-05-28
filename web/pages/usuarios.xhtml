@@ -26,15 +26,15 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Nome</label>
-                                        <h:inputText class="form-control" pt:type="text" value="#{mB_Usuario.user.nome}"/>
+                                        <h:inputText class="form-control" value="#{mbUser.user.nome}"/>
                                     </div>
                                     <div class="form-group">
                                         <label>Data de Nascimento</label>
-                                        <h:inputText class="form-control" pt:type="text" value="#{mB_Usuario.user.dataNascimento}"/>
+                                        <h:inputText class="form-control" value="#{mbUser.user.dataNascimento}"/>
                                     </div>
                                     <div class="form-group">
                                         <label>Sexo</label>
-                                        <h:inputText class="form-control" pt:type="text" value="#{mB_Usuario.user.sexo}"/>
+                                        <h:inputText class="form-control" value="#{mbUser.user.sexo}"/>
                                     </div>
                                     
 
@@ -43,16 +43,16 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>E-mail</label>
-                                        <h:inputText class="form-control" pt:type="number" pt:step="0.1" value="#{mB_Usuario.user.email}"/>
+                                        <h:inputText class="form-control" pt:step="0.1" value="#{mbUser.user.email}"/>
                                     </div>
                                     <div class="form-group">
                                         <label>Senha</label>
-                                        <h:inputText class="form-control" pt:type="number" pt:step="0.1" value="#{mB_Usuario.user.senha}"/>
+                                        <h:inputText class="form-control" pt:step="0.1" value="#{mbUser.user.senha}"/>
                                     </div>
                                     <div class="form-group">
                                         <br />
                                         <h:commandButton pt:type="reset" class="btn btn-warning" value="Limpar"></h:commandButton>
-                                        <h:commandButton action="#{mB_Usuario.cadastraEeditaUsuario()}" class="btn btn-success" pt:data-toggle="modal" pt:data-target="#myModal" value="Enviar" ></h:commandButton>   
+                                        <h:commandButton action="#{mbUser.cadastraEeditaUsuario()}" class="btn btn-success" pt:data-toggle="modal" pt:data-target="#myModal" value="Enviar" ></h:commandButton>   
                                     </div>
                                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">

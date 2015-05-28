@@ -14,7 +14,7 @@ import javax.faces.bean.SessionScoped;
  *
  * @author 631210040
  */
-@ManagedBean
+@ManagedBean (name = "mbUser")
 @SessionScoped
 public class MB_Usuario {
     
