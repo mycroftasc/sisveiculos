@@ -36,6 +36,13 @@ public class B_ManutencaoExt {
         this.valorMaoDeObra = valorMaoDeObra;
     }
 
+    
+    
+
+
+    public B_ManutencaoExt() {
+    }
+    
     public Integer getId() {
         return id;
     }

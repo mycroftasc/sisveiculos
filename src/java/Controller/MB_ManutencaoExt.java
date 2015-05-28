@@ -27,6 +27,13 @@ public class MB_ManutencaoExt {
         this.manExt = manExt;
         this.mans = mans;
     }
+
+    public MB_ManutencaoExt() {
+        manExt = new B_ManutencaoExt();
+        
+    }
+    
+    
     
     public void cadastraEeditaManutencao() {
         if (edit) {
@@ -63,11 +70,21 @@ public class MB_ManutencaoExt {
         this.mans = mans;
     }
 
-    public B_ManutencaoExt getMan() {
+    public B_ManutencaoExt getManExt() {
         return manExt;
     }
 
-    public void setMan(B_ManutencaoExt man) {
-        this.manExt = man;
+    public void setManExt(B_ManutencaoExt manExt) {
+        this.manExt = manExt;
     }
+
+    public boolean isEdit() {
+        return edit;
+    }
+
+    public void setEdit(boolean edit) {
+        this.edit = edit;
+    }
+    
+    
 }

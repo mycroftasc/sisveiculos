@@ -28,6 +28,15 @@ public class B_Usuario {
     public B_Usuario() {
     }
 
+    public B_Usuario(int id, String nome, String dataNascimento, String sexo, String email, String senha) {
+        this.id = id;
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+        this.sexo = sexo;
+        this.email = email;
+        this.senha = senha;
+    }
+    
     public int getId() {
         return id;
     }

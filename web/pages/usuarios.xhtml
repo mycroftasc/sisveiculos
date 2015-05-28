@@ -9,7 +9,7 @@
     <ui:define name="content">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <h1 class="page-header">Manutenções</h1>
+                <h1 class="page-header">Usuarios</h1>
             </div>
             <!-- /.col-lg-6 col-lg-offset-3 -->
         </div>
@@ -26,50 +26,43 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Nome</label>
-                                        <h:inputText class="form-control" pt:type="text" value="#{mbMan.man.nome}"/>
+                                        <h:inputText class="form-control" pt:type="text" value="#{mB_Usuario.user.nome}"/>
                                     </div>
                                     <div class="form-group">
-                                        <label>Descrição</label>
-                                        <h:inputText class="form-control" pt:type="text" value="#{mbMan.man.descricao}"/>
+                                        <label>Data de Nascimento</label>
+                                        <h:inputText class="form-control" pt:type="text" value="#{mB_Usuario.user.dataNascimento}"/>
                                     </div>
                                     <div class="form-group">
-                                        <label>Data Manutenção</label>
-                                        <h:inputText class="form-control" value="#{mbManExt.manExt.dataManutencao}"/>
+                                        <label>Sexo</label>
+                                        <h:inputText class="form-control" pt:type="text" value="#{mB_Usuario.user.sexo}"/>
                                     </div>
-                                    <div class="form-group">
-                                        <label>Km da Manutenção</label>
-                                        <h:inputText class="form-control" pt:type="number" pt:step="0.1" value="#{mbManExt.manExt.kmManutencao}"/>
-                                    </div>
+                                    
 
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Valor da Peça</label>
-                                        <h:inputText class="form-control" pt:type="number" pt:step="0.1" value="#{mbManExt.manExt.valorPeca}"/>
+                                        <label>E-mail</label>
+                                        <h:inputText class="form-control" pt:type="number" pt:step="0.1" value="#{mB_Usuario.user.email}"/>
                                     </div>
                                     <div class="form-group">
-                                        <label>Valor da Mão de Obra</label>
-                                        <h:inputText class="form-control" pt:type="number" pt:step="0.1" value="#{mbManExt.manExt.valorMaoDeObra}"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Valor Total</label>
-                                        <h:inputText class="form-control" pt:type="number" pt:step="0.1" value="#{mbManExt.manExt.valorMaoDeObra + mbManExt.manExt.valorPeca}"/>
+                                        <label>Senha</label>
+                                        <h:inputText class="form-control" pt:type="number" pt:step="0.1" value="#{mB_Usuario.user.senha}"/>
                                     </div>
                                     <div class="form-group">
                                         <br />
                                         <h:commandButton pt:type="reset" class="btn btn-warning" value="Limpar"></h:commandButton>
-                                        <h:commandButton class="btn btn-success" pt:data-toggle="modal" pt:data-target="#myModal" value="Enviar" action="#{mbMan.cadastraEeditaManutencao()}"></h:commandButton>   
+                                        <h:commandButton action="#{mB_Usuario.cadastraEeditaUsuario()}" class="btn btn-success" pt:data-toggle="modal" pt:data-target="#myModal" value="Enviar" ></h:commandButton>   
                                     </div>
                                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                    <h4 class="modal-title" id="myModalLabel">Manutenção</h4>
+                                                    <h4 class="modal-title" id="myModalLabel">Usuarios</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Manutenção cadastrada com sucesso!
+                                                    Usuario cadastrada com sucesso!
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
