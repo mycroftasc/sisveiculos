@@ -4,7 +4,8 @@
                 template="./template.xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
         <div class="row">
@@ -26,40 +27,39 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Nome</label>
-                                        <h:inputText class="form-control" pt:type="text" value="#{mbManExt.man.nome}"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Descrição</label>
-                                        <h:inputText class="form-control" pt:type="text" value="#{mbMan.man.descricao}"/>
+                                        <h:selectOneMenu value="" class="form-control">                    
+                                            <f:selectItem itemValue="0" itemLabel="Selecione a manutenção"></f:selectItem>
+                                            <f:selectItem itemValue="1" itemLabel="Troca de Óleo"></f:selectItem>
+                                            <f:selectItem itemValue="2" itemLabel="Troca de Cabo de Freio"></f:selectItem>
+                                            <f:selectItem itemValue="3" itemLabel="Troca de Cabo de Embreagem"></f:selectItem>
+                                            <f:selectItem itemValue="4" itemLabel="Troca de Tanque de Combustível"></f:selectItem>
+                                            <f:selectItem itemValue="5" itemLabel="Troca de Capô"></f:selectItem>
+                                            <f:selectItem itemValue="6" itemLabel="Troca de Rebimboca"></f:selectItem>
+                                            <f:selectItem itemValue="7" itemLabel="Troca de Parafuseta"></f:selectItem>
+                                        </h:selectOneMenu>
                                     </div>
                                     <div class="form-group">
                                         <label>Data Manutenção</label>
-                                        <h:inputText class="form-control" pt:type="text" value="#{mbMan.man.dataDaManutencao}"/>
+                                        <h:inputText class="form-control" pt:type="text" value=""/>
                                     </div>
                                     <div class="form-group">
                                         <label>Km da Manutenção</label>
-                                        <h:inputText class="form-control" pt:type="number" pt:step="0.1" value="#{mbMan.man.quilometragemDaManutencao}"/>
+                                        <h:inputText class="form-control" pt:type="number" pt:step="0.1" value=""/>
                                     </div>
-
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Valor da Peça</label>
-                                        <h:inputText class="form-control" pt:type="number" pt:step="0.1" value="#{mbMan.man.valorPeca}"/>
+                                        <h:inputText class="form-control" pt:type="number" pt:step="0.1" value=""/>
                                     </div>
                                     <div class="form-group">
                                         <label>Valor da Mão de Obra</label>
-                                        <h:inputText class="form-control" pt:type="number" pt:step="0.1" value="#{mbMan.man.valorMaoDeObra}"/>
+                                        <h:inputText class="form-control" pt:type="number" pt:step="0.1" value=""/>
                                     </div>
                                     <div class="form-group">
                                         <label>Valor Total</label>
-                                        <h:inputText class="form-control" pt:type="number" pt:step="0.1" value="#{mbMan.man.valorTotal}"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <br />
-                                        <h:commandButton pt:type="reset" class="btn btn-warning" value="Limpar"></h:commandButton>
-                                        <h:commandButton class="btn btn-success" pt:data-toggle="modal" pt:data-target="#myModal" value="Enviar" action="#{mbMan.cadastraEeditaManutencao()}"></h:commandButton>   
+                                        <h:inputText class="form-control" pt:type="number" pt:step="0.1" value=""/>
                                     </div>
                                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
@@ -77,6 +77,19 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group" align="right">
+                                        <h:commandButton pt:type="reset" class="btn btn-warning" value="Limpar"></h:commandButton>
+                                        
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <h:commandButton class="btn btn-success" pt:data-toggle="modal" pt:data-target="#myModal" value="Enviar" ></h:commandButton>   
+                                    </div>
+
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
                             </h:form>
