@@ -23,6 +23,8 @@ public class MB_Usuario {
     private boolean edit = false;
 
     public MB_Usuario() {
+        this.user = new B_Usuario();
+        this.users = new ArrayList<B_Usuario>();
     }
 
     public void cadastraEeditaUsuario() {

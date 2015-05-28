@@ -24,7 +24,7 @@ public class B_Usuario {
     private String sexo;
     private String email;
     private String senha;
-    
+
     public B_Usuario() {
     }
 
@@ -84,6 +84,6 @@ public class B_Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
+    
     
 }
