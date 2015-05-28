@@ -20,7 +20,7 @@ public class B_Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nome;
-    private Integer idade;
+    private String dataNascimento;
     private String sexo;
     private String email;
     private String senha;
@@ -44,13 +44,14 @@ public class B_Usuario {
         this.nome = nome;
     }
 
-    public Integer getIdade() {
-        return idade;
+    public String getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setIdade(Integer idade) {
-        this.idade = idade;
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
+
 
     public String getSexo() {
         return sexo;

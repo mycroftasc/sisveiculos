@@ -35,7 +35,7 @@ public class MB_Manutencao {
             //this.limpaCampos();
             this.edit = false;
         } else {
-            B_Manutencao v = new B_Manutencao(man);
+            B_Manutencao v = new B_Manutencao(this.man.getId(), this.man.getNome(), this.man.getDescricao());
             BD_Manutencao bdMan = new BD_Manutencao();
             bdMan.salvar(v);
             
@@ -55,19 +55,6 @@ public class MB_Manutencao {
         edit = true;
     }
     
-    public void limpaCampos(){
-        this.man.setDataDaManutencao(null);
-        this.man.setDataDaProximaManutencao(null);
-        this.man.setDescricao(null);
-        this.man.setNome(null);
-        this.man.setQuilometragemDaManutencao(null);
-        this.man.setQuilometragemDaProximaManutencao(null);
-        this.man.setTipo(null);
-        this.man.setValorMaoDeObra(null);
-        this.man.setValorPeca(null);
-        this.man.setValorTotal(null);
-    }
-
     public ArrayList<B_Manutencao> getMans() {
         return mans;
     }

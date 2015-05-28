@@ -34,8 +34,9 @@ public class MB_Veiculo {
             //this.limpaCampos();
             this.edit = false;
         } else {
-            B_Veiculo v = new B_Veiculo(veic);
-            veics.add(v);
+            B_Veiculo v = new B_Veiculo(this.veic.getId(), this.veic.getPlaca(), this.veic.getIdUsuario(), this.veic.getIdModelo());
+            BD_Veiculo ve = new BD_Veiculo();
+            ve.salvar(v);
             //this.limpaCampos();
             this.edit = false;
         }
@@ -50,17 +51,6 @@ public class MB_Veiculo {
     public void editaVeiculo(B_Veiculo v){
         this.veic = v;
         edit = true;
-    }
-    
-    public void limpaCampos(){
-        this.veic.setAnoFabricacao(null);
-        this.veic.setAnoModelo(null);
-        this.veic.setCor(null);
-        this.veic.setMarca(null);
-        this.veic.setModelo(null);
-        this.veic.setPlaca(null);
-        this.veic.setQuilometragem(null);
-        this.veic.setTipo(null);
     }
 
     public B_Veiculo getVeic() {
