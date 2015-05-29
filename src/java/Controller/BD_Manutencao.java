@@ -12,18 +12,17 @@ import javax.persistence.TypedQuery;
 
 /**
  *
- * @author 631210040
+ * @author JeanCarlo
  */
 public class BD_Manutencao {
-
-    public void salvar(B_Manutencao manut) {
+    public void salvar(B_Manutencao mnt) {
 
         try {
             EntityManager entityManager = Conexao.getEntityManager();
 
             entityManager.getTransaction().begin();
 
-            entityManager.persist(manut);
+            entityManager.persist(mnt);
 
             entityManager.getTransaction().commit();
 
@@ -33,14 +32,14 @@ public class BD_Manutencao {
         }
     }
 
-    public void editar(B_Manutencao manut) {
+    public void editar(B_Manutencao mnt) {
 
         try {
             EntityManager entityManager = Conexao.getEntityManager();
 
             entityManager.getTransaction().begin();
 
-            entityManager.persist(manut);
+            entityManager.persist(mnt);
 
             entityManager.getTransaction().commit();
 
@@ -51,14 +50,14 @@ public class BD_Manutencao {
 
     }
 
-    public void excluir(B_Manutencao manut) {
+    public void excluir(B_Manutencao mnt) {
 
         try {
             EntityManager entityManager = Conexao.getEntityManager();
 
             entityManager.getTransaction().begin();
 
-            entityManager.persist(manut);
+            entityManager.persist(mnt);
 
             entityManager.getTransaction().commit();
 
@@ -68,7 +67,7 @@ public class BD_Manutencao {
         }
     }
 
-    public List<B_Manutencao> listar(B_Manutencao manut){
+    public List<B_Manutencao> listar(B_Manutencao u){
      
         try {
             EntityManager entityManager = Conexao.getEntityManager();

@@ -12,47 +12,88 @@ import javax.persistence.Id;
 
 /**
  *
- * @author jean.leal
+ * @author JeanCarlo
  */
 @Entity
 public class B_Manutencao {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String nome;
-    private String descricao;
+    private Integer id;
+    private Integer idManutencao;
+    private Integer idVeiculo;
+    private String dataManutencao;
+    private String kmManutencao;
+    private Float valorPeca;
+    private Float valorMaoDeObra;
+
+    public B_Manutencao(Integer id, Integer idManutencao, Integer idVeiculo, String dataManutencao, String kmManutencao, Float valorPeca, Float valorMaoDeObra) {
+        this.id = id;
+        this.idManutencao = idManutencao;
+        this.idVeiculo = idVeiculo;
+        this.dataManutencao = dataManutencao;
+        this.kmManutencao = kmManutencao;
+        this.valorPeca = valorPeca;
+        this.valorMaoDeObra = valorMaoDeObra;
+    }
 
     public B_Manutencao() {
     }
-
-    public B_Manutencao(int id, String nome, String descricao) {
-        this.id = id;
-        this.nome = nome;
-        this.descricao = descricao;
-    }
-
-    public int getId() {
+    
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public Integer getIdManutencao() {
+        return idManutencao;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setIdManutencao(Integer idManutencao) {
+        this.idManutencao = idManutencao;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public Integer getIdVeiculo() {
+        return idVeiculo;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setIdVeiculo(Integer idVeiculo) {
+        this.idVeiculo = idVeiculo;
     }
+
+    public String getDataManutencao() {
+        return dataManutencao;
+    }
+
+    public void setDataManutencao(String dataManutencao) {
+        this.dataManutencao = dataManutencao;
+    }
+
+    public String getKmManutencao() {
+        return kmManutencao;
+    }
+
+    public void setKmManutencao(String kmManutencao) {
+        this.kmManutencao = kmManutencao;
+    }
+
+    public Float getValorPeca() {
+        return valorPeca;
+    }
+
+    public void setValorPeca(Float valorPeca) {
+        this.valorPeca = valorPeca;
+    }
+
+    public Float getValorMaoDeObra() {
+        return valorMaoDeObra;
+    }
+
+    public void setValorMaoDeObra(Float valorMaoDeObra) {
+        this.valorMaoDeObra = valorMaoDeObra;
+    }
+    
+    
 }

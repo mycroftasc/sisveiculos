@@ -1,20 +1,35 @@
-CREATE TABLE tipoVeiculo (
+
+CREATE TABLE modelosVeiculos (
+  idModelo INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(255) NOT NULL,
+  idMarca INT(11) NOT NULL,
+  PRIMARY KEY (IdModelo)
+);
+
+
+CREATE TABLE marcasVeiculos (
+  idmarcasVeiculos INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(255) NOT NULL,
+  idModelo INT(11) UNSIGNED NOT NULL,
+  PRIMARY KEY(idmarcasVeiculos)
+);
+
+CREATE TABLE tiposVeiculos (
   idTipoVeiculo INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-  descricao VARCHAR(255) NOT NULL,
+  nome VARCHAR(255) NOT NULL,
   PRIMARY KEY(idTipoVeiculo)
-)
-ENGINE=INNODB;
+);
 
 
-CREATE TABLE MarcaVeiculo (
-  idMarca INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-  descricao VARCHAR(255) NOT NULL,
-  PRIMARY KEY(idMarca)
-)
-ENGINE=INNODB;
+CREATE TABLE marcasXtipos (
+idMarcaXTipo INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+idMarca INT(11) UNSIGNED NOT NULL,
+idTipo  INT(11) UNSIGNED NOT NULL,
+PRIMARY KEY(idMarcaXTipo)
+);
 
 
-CREATE TABLE usuario (
+CREATE TABLE usuarios (
   idUsuario INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   nome VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
@@ -22,128 +37,156 @@ CREATE TABLE usuario (
   sexo CHAR(1) NULL,
   dataNascimento DATE NULL,
   PRIMARY KEY(idUsuario)
-)
-ENGINE=INNODB;
+);
 
 
-CREATE TABLE manutencao (
-  idManutencao INT(11) NOT NULL AUTO_INCREMENT,
+
+CREATE TABLE veiculos (
+  idVeiculo INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  idUsuario INT(11) UNSIGNED NOT NULL,
+  idMarcaXTipo  INT(11) UNSIGNED NOT NULL,
+  placa CHAR(7) NOT NULL,
+  cor VARCHAR(60) NOT NULL,
+  PRIMARY KEY(idVeiculo)
+);
+
+
+
+CREATE TABLE servicos (
+  idServico INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   nome VARCHAR(255) NOT NULL,
   descricao VARCHAR(255) NOT NULL,
-  PRIMARY KEY(idManutencao)
-)
-ENGINE=INNODB;
+  PRIMARY KEY(idServico)
+);
 
 
-CREATE TABLE manutencao_x_veiculo (
+CREATE TABLE manutencoes (
   idManutencao INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   idVeiculo INT(11) UNSIGNED NOT NULL,
+  idServico INT(11) UNSIGNED NOT NULL,
   dataManutencao DATE NOT NULL,
-  quilometragemManutencao DATE NOT NULL,
+  quilometragemManutencao FLOAT NOT NULL,
   valorPeca FLOAT NOT NULL,
   ValorMaoObra FLOAT NOT NULL,
   valorTotal FLOAT NOT NULL,
   PRIMARY KEY(idManutencao)
-)
-ENGINE=INNODB;
+);
+
+ALTER TABLE manutencoes
+ADD CONSTRAINT fk_servico_manutencao FOREIGN KEY (idServico) REFERENCES servicos (
+idServico);
+
+ALTER TABLE veiculos
+ADD CONSTRAINT fk_marcaxtipo_veiculo FOREIGN KEY (idMarcaXTipo) REFERENCES marcasXtipos (
+idMarcaXTipo);
+
+ALTER TABLE marcasXtipos
+ADD CONSTRAINT fk_marca_marcaXtipo FOREIGN KEY (idMarca) REFERENCES marcasVeiculos (
+idmarcasVeiculos);
+
+ALTER TABLE marcasXtipos
+ADD CONSTRAINT fk_tipo_marcaXtipo FOREIGN KEY (idTipo) REFERENCES tiposVeiculos (
+idTipoVeiculo);
+
+ALTER TABLE modelosVeiculos
+ADD CONSTRAINT fk_marcaVeiculo_modeloVeiculo FOREIGN KEY (idMarca) REFERENCES marcasVeiculos (
+idmarcasVeiculos);
+
+ALTER TABLE veiculos
+ADD CONSTRAINT fk_veiculo_usuario FOREIGN KEY (idUsuario) REFERENCES usuarios (idUsuario);
+
+ALTER TABLE manutencoes
+ADD CONSTRAINT fk_veiculo FOREIGN KEY (idVeiculo) REFERENCES veiculos (idveiculo);
 
 
-CREATE TABLE veiculo (
-  idVeiculo INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-  idTipoVeiculo INT(11) UNSIGNED NOT NULL,
-  idMarca INT(11) UNSIGNED NOT NULL,
-  idUsuario INT(11) UNSIGNED NOT NULL,
-  placa CHAR(7) NULL,
-  PRIMARY KEY(idVeiculo)
-)
-ENGINE=INNODB;
-
-
-ALTER TABLE veiculo
-ADD CONSTRAINT fk_veiculo_tipoVeiculo FOREIGN KEY (idTipoVeiculo) REFERENCES tipoVeiculo (idTipoVeiculo);
-
-
-ALTER TABLE veiculo
-ADD CONSTRAINT fk_veiculo_marcaVeiculo FOREIGN KEY (idMarca) REFERENCES marcaVeiculo (idMarca);
-
-
-ALTER TABLE veiculo
-ADD CONSTRAINT fk_veiculo_usuario FOREIGN KEY (idUsuario) REFERENCES usuario (idUsuario);
-
-
-ALTER TABLE manutencao_x_veiculo
-ADD CONSTRAINT fk_veiculo FOREIGN KEY (idVeiculo) REFERENCES veiculo (idveiculo);
-
-
-INSERT INTO tipoVeiculo (descricao) VALUES ('Motocicleta');
-INSERT INTO tipoVeiculo (descricao) VALUES ('Automovel');
-INSERT INTO tipoVeiculo (descricao) VALUES ('�nibus');
-INSERT INTO tipoVeiculo (descricao) VALUES ('Caminh�o');
+INSERT INTO tiposVeiculos (nome) VALUES ('Motocicleta');
+INSERT INTO tiposVeiculos (nome) VALUES ('Automovel');
+INSERT INTO tiposVeiculos (nome) VALUES ('�nibus');
+INSERT INTO tiposVeiculos (nome) VALUES ('Caminh�o');
 
 /* Carros*/
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Agrale');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Aston Martin');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Audi');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Bentley');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Bmw');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Changan');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Chery');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Chevrolet');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Chrysler');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Citro�n');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Dodge');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('DS');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Effa Motors');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Ferrari');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Fiat');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Ford');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Geely');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Honda');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Hyundai');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Iveco');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Jac');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Jaguar');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Jeep');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Jinbei');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Kia');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Lamborghini');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Land Rover');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Lexus');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Lifan');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Mahindra');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Maserati');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Mercedes-Benz');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Mini');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Mitsubishi');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Nissan');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Peugeot');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Porsche');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Ram');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Rely');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Renault');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Rolls Royce');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Shineray');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Smart');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Ssangyong');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Subaru');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Suzuki');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Tac');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Toyota');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Troller');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Volkswagen');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Volvo');
+INSERT INTO marcasVeiculos (nome) VALUES ('Agrale');
+INSERT INTO marcasVeiculos (nome) VALUES ('Aston Martin');
+INSERT INTO marcasVeiculos (nome) VALUES ('Audi');
+INSERT INTO marcasVeiculos (nome) VALUES ('Bentley');
+INSERT INTO marcasVeiculos (nome) VALUES ('Bmw');
+INSERT INTO marcasVeiculos (nome) VALUES ('Changan');
+INSERT INTO marcasVeiculos (nome) VALUES ('Chery');
+INSERT INTO marcasVeiculos (nome) VALUES ('Chevrolet');
+INSERT INTO marcasVeiculos (nome) VALUES ('Chrysler');
+INSERT INTO marcasVeiculos (nome) VALUES ('Citro�n');
+INSERT INTO marcasVeiculos (nome) VALUES ('Dodge');
+INSERT INTO marcasVeiculos (nome) VALUES ('DS');
+INSERT INTO marcasVeiculos (nome) VALUES ('Effa Motors');
+INSERT INTO marcasVeiculos (nome) VALUES ('Ferrari');
+INSERT INTO marcasVeiculos (nome) VALUES ('Fiat');
+INSERT INTO marcasVeiculos (nome) VALUES ('Ford');
+INSERT INTO marcasVeiculos (nome) VALUES ('Geely');
+INSERT INTO marcasVeiculos (nome) VALUES ('Honda');
+INSERT INTO marcasVeiculos (nome) VALUES ('Hyundai');
+INSERT INTO marcasVeiculos (nome) VALUES ('Iveco');
+INSERT INTO marcasVeiculos (nome) VALUES ('Jac');
+INSERT INTO marcasVeiculos (nome) VALUES ('Jaguar');
+INSERT INTO marcasVeiculos (nome) VALUES ('Jeep');
+INSERT INTO marcasVeiculos (nome) VALUES ('Jinbei');
+INSERT INTO marcasVeiculos (nome) VALUES ('Kia');
+INSERT INTO marcasVeiculos (nome) VALUES ('Lamborghini');
+INSERT INTO marcasVeiculos (nome) VALUES ('Land Rover');
+INSERT INTO marcasVeiculos (nome) VALUES ('Lexus');
+INSERT INTO marcasVeiculos (nome) VALUES ('Lifan');
+INSERT INTO marcasVeiculos (nome) VALUES ('Mahindra');
+INSERT INTO marcasVeiculos (nome) VALUES ('Maserati');
+INSERT INTO marcasVeiculos (nome) VALUES ('Mercedes-Benz');
+INSERT INTO marcasVeiculos (nome) VALUES ('Mini');
+INSERT INTO marcasVeiculos (nome) VALUES ('Mitsubishi');
+INSERT INTO marcasVeiculos (nome) VALUES ('Nissan');
+INSERT INTO marcasVeiculos (nome) VALUES ('Peugeot');
+INSERT INTO marcasVeiculos (nome) VALUES ('Porsche');
+INSERT INTO marcasVeiculos (nome) VALUES ('Ram');
+INSERT INTO marcasVeiculos (nome) VALUES ('Rely');
+INSERT INTO marcasVeiculos (nome) VALUES ('Renault');
+INSERT INTO marcasVeiculos (nome) VALUES ('Rolls Royce');
+INSERT INTO marcasVeiculos (nome) VALUES ('Shineray');
+INSERT INTO marcasVeiculos (nome) VALUES ('Smart');
+INSERT INTO marcasVeiculos (nome) VALUES ('Ssangyong');
+INSERT INTO marcasVeiculos (nome) VALUES ('Subaru');
+INSERT INTO marcasVeiculos (nome) VALUES ('Suzuki');
+INSERT INTO marcasVeiculos (nome) VALUES ('Tac');
+INSERT INTO marcasVeiculos (nome) VALUES ('Toyota');
+INSERT INTO marcasVeiculos (nome) VALUES ('Troller');
+INSERT INTO marcasVeiculos (nome) VALUES ('Volkswagen');
+INSERT INTO marcasVeiculos (nome) VALUES ('Volvo');
 
 
 /*Motos*/
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Dafra');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Harley-Davidson');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Kasinski');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Kawasaki');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('Yamaha');
+INSERT INTO marcasVeiculos (nome) VALUES ('Dafra');
+INSERT INTO marcasVeiculos (nome) VALUES ('Harley-Davidson');
+INSERT INTO marcasVeiculos (nome) VALUES ('Kasinski');
+INSERT INTO marcasVeiculos (nome) VALUES ('Kawasaki');
+INSERT INTO marcasVeiculos (nome) VALUES ('Yamaha');
 
-/*caminhoes*/
-INSERT INTO MarcaVeiculo (descricao) VALUES ('HAFEI');
-INSERT INTO MarcaVeiculo (descricao) VALUES ('SCANIA');
+/*Caminhoes*/
+INSERT INTO marcasVeiculos (nome) VALUES ('Hafei');
+INSERT INTO marcasVeiculos (nome) VALUES ('Sxania');
+
+/*Onibus*/
+INSERT INTO marcasVeiculos (nome) VALUES ('BusCar');
+INSERT INTO marcasVeiculos (nome) VALUES ('Caio');
+INSERT INTO marcasVeiculos (nome) VALUES ('Ciferal');
+INSERT INTO marcasVeiculos (nome) VALUES ('Cobrasma S.A');
+INSERT INTO marcasVeiculos (nome) VALUES ('Comil');
+INSERT INTO marcasVeiculos (nome) VALUES ('Irizar');
+INSERT INTO marcasVeiculos (nome) VALUES ('Jotave');
+INSERT INTO marcasVeiculos (nome) VALUES ('Mafersa');
+INSERT INTO marcasVeiculos (nome) VALUES ('Marcopolo');
+INSERT INTO marcasVeiculos (nome) VALUES ('Mascarello');
+INSERT INTO marcasVeiculos (nome) VALUES ('maxiBus');
+INSERT INTO marcasVeiculos (nome) VALUES ('NeoBus');
+INSERT INTO marcasVeiculos (nome) VALUES ('Nielson');
+INSERT INTO marcasVeiculos (nome) VALUES ('TecnoBbus');
+INSERT INTO marcasVeiculos (nome) VALUES ('Thamco');
+INSERT INTO marcasVeiculos (nome) VALUES ('Volare');
+
 
 
 

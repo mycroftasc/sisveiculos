@@ -5,24 +5,24 @@
  */
 package Controller;
 
-import Model.B_ManutencaoExt;
+import Model.B_Marca;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 /**
  *
- * @author JeanCarlo
+ * @author alexandre-carmo
  */
-public class BD_ManutencaoExt {
-    public void salvar(B_ManutencaoExt u) {
+public class BD_Marca {
+    public void salvar(B_Marca mrc) {
 
         try {
             EntityManager entityManager = Conexao.getEntityManager();
 
             entityManager.getTransaction().begin();
 
-            entityManager.persist(u);
+            entityManager.persist(mrc);
 
             entityManager.getTransaction().commit();
 
@@ -32,14 +32,14 @@ public class BD_ManutencaoExt {
         }
     }
 
-    public void editar(B_ManutencaoExt u) {
+    public void editar(B_Marca mrc) {
 
         try {
             EntityManager entityManager = Conexao.getEntityManager();
 
             entityManager.getTransaction().begin();
 
-            entityManager.persist(u);
+            entityManager.persist(mrc);
 
             entityManager.getTransaction().commit();
 
@@ -50,14 +50,14 @@ public class BD_ManutencaoExt {
 
     }
 
-    public void excluir(B_ManutencaoExt u) {
+    public void excluir(B_Marca mrc) {
 
         try {
             EntityManager entityManager = Conexao.getEntityManager();
 
             entityManager.getTransaction().begin();
 
-            entityManager.persist(u);
+            entityManager.persist(mrc);
 
             entityManager.getTransaction().commit();
 
@@ -67,14 +67,14 @@ public class BD_ManutencaoExt {
         }
     }
 
-    public List<B_ManutencaoExt> listar(B_ManutencaoExt u){
+    public List<B_Marca> listar(B_Marca u){
      
         try {
             EntityManager entityManager = Conexao.getEntityManager();
 
-            TypedQuery<B_ManutencaoExt> query = entityManager.createNamedQuery("FROM manutencoes m", B_ManutencaoExt.class);
+            TypedQuery<B_Marca> query = entityManager.createNamedQuery("FROM marcasVeiculos m", B_Marca.class);
             
-            List<B_ManutencaoExt> listaManutencoes = query.getResultList();
+            List<B_Marca> listaManutencoes = query.getResultList();
                    
             entityManager.close();
             
@@ -85,14 +85,14 @@ public class BD_ManutencaoExt {
         return null;
     }
     
-    public B_ManutencaoExt pesquizarPorID(Integer id){
+    public B_Marca pesquizarPorID(Integer id){
     
     EntityManager entityManager = Conexao.getEntityManager();
     
-    B_ManutencaoExt manPesq = entityManager.find(B_ManutencaoExt.class, id);
+    B_Marca mrcPesq = entityManager.find(B_Marca.class, id);
     
     entityManager.close();
     
-    return manPesq;
+    return mrcPesq;
     }
 }

@@ -7,7 +7,6 @@ package Controller;
 
 import Model.B_Manutencao;
 import java.util.ArrayList;
-import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -22,10 +21,14 @@ public class MB_Manutencao {
     private B_Manutencao man;
     private ArrayList<B_Manutencao> mans;
     private boolean edit = false;
-    
+
+    public MB_Manutencao(B_Manutencao manExt, ArrayList<B_Manutencao> mans) {
+        this.man = manExt;
+        this.mans = mans;
+    }
+
     public MB_Manutencao() {
         man = new B_Manutencao();
-        mans = new ArrayList<B_Manutencao>();
     }
     
     public void cadastraEeditaManutencao() {
@@ -35,9 +38,9 @@ public class MB_Manutencao {
             //this.limpaCampos();
             this.edit = false;
         } else {
-            B_Manutencao v = new B_Manutencao(this.man.getId(), this.man.getNome(), this.man.getDescricao());
+            B_Manutencao m = new B_Manutencao(this.man.getId(), 1, 1, this.man.getDataManutencao(), this.man.getKmManutencao(), this.man.getValorPeca(), this.man.getValorMaoDeObra());
             BD_Manutencao bdMan = new BD_Manutencao();
-            bdMan.salvar(v);
+            bdMan.salvar(m);
             
             //this.limpaCampos();
             this.edit = false;
@@ -63,11 +66,21 @@ public class MB_Manutencao {
         this.mans = mans;
     }
 
-    public B_Manutencao getMan() {
+    public B_Manutencao getManExt() {
         return man;
     }
 
-    public void setMan(B_Manutencao man) {
+    public void setManExt(B_Manutencao man) {
         this.man = man;
     }
+
+    public boolean isEdit() {
+        return edit;
+    }
+
+    public void setEdit(boolean edit) {
+        this.edit = edit;
+    }
+    
+    
 }

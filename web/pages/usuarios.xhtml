@@ -4,12 +4,13 @@
                 template="./template.xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <h1 class="page-header">Usuarios</h1>
+                <h1 class="page-header">Usuários</h1>
             </div>
             <!-- /.col-lg-6 col-lg-offset-3 -->
         </div>
@@ -35,6 +36,10 @@
                                     <div class="form-group">
                                         <label>Sexo</label>
                                         <h:inputText class="form-control" value="#{mbUser.user.sexo}"/>
+                                        <h:selectOneRadio>
+                                            <f:selectItem itemValue="m" itemLabel="Masculino"></f:selectItem>
+                                            <f:selectItem itemValue="f" itemLabel="Feminino"></f:selectItem>
+                                        </h:selectOneRadio>
                                     </div>
                                     
 
@@ -50,25 +55,24 @@
                                         <h:inputText class="form-control" pt:step="0.1" value="#{mbUser.user.senha}"/>
                                     </div>
                                     <div class="form-group">
-                                        <br />
-                                        <h:commandButton pt:type="reset" class="btn btn-warning" value="Limpar"></h:commandButton>
-                                        <h:commandButton action="#{mbUser.cadastraEeditaUsuario()}" class="btn btn-success" pt:data-toggle="modal" pt:data-target="#myModal" value="Enviar" ></h:commandButton>   
+                                        <br/>
+                                        <br/>
+                                        <br/>                                                                                
                                     </div>
-                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                    <h4 class="modal-title" id="myModalLabel">Usuarios</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Usuario cadastrada com sucesso!
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    </div>
+                                <!-- /.col-lg-6 (nested) -->
+                                
+                                <div class="col-lg-6">
+                                    <div class="form-group" align="right">
+                                        
+                                        <h:commandButton pt:type="reset" class="btn btn-warning" value="Limpar"></h:commandButton>
+                                        
+                                    </div>
+                                    </div>
+                                <!-- /.col-lg-6 (nested) -->
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <h:commandButton action="#{mbUser.cadastraEeditaUsuario()}" class="btn btn-success" pt:data-toggle="modal" pt:data-target="#myModal" value="Enviar" ></h:commandButton>   
                                     </div>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->

@@ -72,7 +72,7 @@ public class BD_Veiculo {
         try {
             EntityManager entityManager = Conexao.getEntityManager();
 
-            TypedQuery<B_Veiculo> query = entityManager.createNamedQuery("FROM manutencoes m", B_Veiculo.class);
+            TypedQuery<B_Veiculo> query = entityManager.createNamedQuery("FROM veiculos v", B_Veiculo.class);
             
             List<B_Veiculo> listaManutencoes = query.getResultList();
                    

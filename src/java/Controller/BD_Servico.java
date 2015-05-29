@@ -5,24 +5,25 @@
  */
 package Controller;
 
-import Model.B_Usuario;
+import Model.B_Servico;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 /**
  *
- * @author JeanCarlo
+ * @author 631210040
  */
-public class BD_Usuario {
-    public void salvar(B_Usuario u) {
+public class BD_Servico {
+
+    public void salvar(B_Servico manut) {
 
         try {
             EntityManager entityManager = Conexao.getEntityManager();
 
             entityManager.getTransaction().begin();
 
-            entityManager.persist(u);
+            entityManager.persist(manut);
 
             entityManager.getTransaction().commit();
 
@@ -32,14 +33,14 @@ public class BD_Usuario {
         }
     }
 
-    public void editar(B_Usuario u) {
+    public void editar(B_Servico manut) {
 
         try {
             EntityManager entityManager = Conexao.getEntityManager();
 
             entityManager.getTransaction().begin();
 
-            entityManager.persist(u);
+            entityManager.persist(manut);
 
             entityManager.getTransaction().commit();
 
@@ -50,14 +51,14 @@ public class BD_Usuario {
 
     }
 
-    public void excluir(B_Usuario u) {
+    public void excluir(B_Servico manut) {
 
         try {
             EntityManager entityManager = Conexao.getEntityManager();
 
             entityManager.getTransaction().begin();
 
-            entityManager.persist(u);
+            entityManager.persist(manut);
 
             entityManager.getTransaction().commit();
 
@@ -67,14 +68,14 @@ public class BD_Usuario {
         }
     }
 
-    public List<B_Usuario> listar(B_Usuario u){
+    public List<B_Servico> listar(B_Servico manut){
      
         try {
             EntityManager entityManager = Conexao.getEntityManager();
 
-            TypedQuery<B_Usuario> query = entityManager.createNamedQuery("FROM usuarios u", B_Usuario.class);
+            TypedQuery<B_Servico> query = entityManager.createNamedQuery("FROM manutencoes m", B_Servico.class);
             
-            List<B_Usuario> listaManutencoes = query.getResultList();
+            List<B_Servico> listaManutencoes = query.getResultList();
                    
             entityManager.close();
             
@@ -85,11 +86,11 @@ public class BD_Usuario {
         return null;
     }
     
-    public B_Usuario pesquizarPorID(Integer id){
+    public B_Servico pesquizarPorID(Integer id){
     
     EntityManager entityManager = Conexao.getEntityManager();
     
-    B_Usuario manPesq = entityManager.find(B_Usuario.class, id);
+    B_Servico manPesq = entityManager.find(B_Servico.class, id);
     
     entityManager.close();
     
