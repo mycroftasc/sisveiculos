@@ -30,10 +30,7 @@ public class MB_ManutencaoExt {
 
     public MB_ManutencaoExt() {
         manExt = new B_ManutencaoExt();
-        
     }
-    
-    
     
     public void cadastraEeditaManutencao() {
         if (edit) {
@@ -42,7 +39,7 @@ public class MB_ManutencaoExt {
             //this.limpaCampos();
             this.edit = false;
         } else {
-            B_ManutencaoExt mExt = new B_ManutencaoExt(this.manExt.getId(), this.manExt.getIdManutencao(), this.manExt.getIdVeiculo(), this.manExt.getDataManutencao(), this.manExt.getKmManutencao(), this.manExt.getValorPeca(), this.manExt.getValorMaoDeObra());
+            B_ManutencaoExt mExt = new B_ManutencaoExt(this.manExt.getId(), 1, 1, this.manExt.getDataManutencao(), this.manExt.getKmManutencao(), this.manExt.getValorPeca(), this.manExt.getValorMaoDeObra());
             BD_ManutencaoExt bdManExt = new BD_ManutencaoExt();
             bdManExt.salvar(mExt);
             
