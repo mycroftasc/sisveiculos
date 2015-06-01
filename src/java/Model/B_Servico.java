@@ -14,7 +14,7 @@ import javax.persistence.Id;
  *
  * @author jean.leal
  */
-@Entity
+@Entity (name = "servicos")
 public class B_Servico {
 
     @Id

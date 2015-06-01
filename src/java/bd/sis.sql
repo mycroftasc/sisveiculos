@@ -10,7 +10,6 @@ CREATE TABLE modelosVeiculos (
 CREATE TABLE marcasVeiculos (
   idmarcasVeiculos INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   nome VARCHAR(255) NOT NULL,
-  idModelo INT(11) UNSIGNED NOT NULL,
   PRIMARY KEY(idmarcasVeiculos)
 );
 

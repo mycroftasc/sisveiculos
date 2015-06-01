@@ -27,7 +27,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Nome</label>
-                                        <h:selectOneMenu value="" class="form-control">                    
+                                        <h:selectOneMenu  class="form-control">                    
                                             <f:selectItem itemValue="0" itemLabel="Selecione a manutenção"></f:selectItem>
                                             <f:selectItem itemValue="1" itemLabel="Troca de Óleo"></f:selectItem>
                                             <f:selectItem itemValue="2" itemLabel="Troca de Cabo de Freio"></f:selectItem>
@@ -40,26 +40,27 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Data Manutenção</label>
-                                        <h:inputText class="form-control" value="#{mbManExt.manExt.dataManutencao}"/>
+                                        <h:inputText class="form-control" value="#{mbMan.man.dataManutencao}"/>
                                     </div>
                                     <div class="form-group">
                                         <label>Km da Manutenção</label>
-                                        <h:inputText class="form-control" value="#{mbManExt.manExt.kmManutencao}"/>
+                                        <h:inputText class="form-control" value="#{mbMan.man.kmManutencao}"/>
                                     </div>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Valor da Peça</label>
-                                        <h:inputText class="form-control" value="#{mbManExt.manExt.valorPeca}"/>
+                                        <h:inputText class="form-control" value="#{mbMan.man.valorPeca}"/>
                                     </div>
                                     <div class="form-group">
                                         <label>Valor da Mão de Obra</label>
-                                        <h:inputText class="form-control" value="#{mbManExt.manExt.valorMaoDeObra}"/>
+                                        <h:inputText class="form-control" value="#{mbMan.man.valorMaoDeObra}"/>
                                     </div>
                                     <div class="form-group">
-                                        <label>Valor Total</label>
-                                        <h:inputText class="form-control" value="#{(mbManExt.manExt.valorMaoDeObra + mbManExt.manExt.valorPeca)}"/>
+                                        <br/>
+                                        <br/>
+                                        <br/>
                                     </div>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
@@ -71,7 +72,7 @@
                                 <!-- /.col-lg-6 (nested) -->
                                 <div class="col-lg-6">    
                                     <div class="form-group">
-                                        <h:commandButton class="btn btn-success" pt:data-toggle="modal" pt:data-target="#myModal" value="Enviar" action="#{mbManExt.cadastraEeditaManutencao()}"></h:commandButton>   
+                                        <h:commandButton class="btn btn-success" pt:data-toggle="modal" pt:data-target="#myModal" value="Enviar" action="#{mbMan.cadastraEeditaManutencao()}"></h:commandButton>   
                                     </div>
                                 </div>
 

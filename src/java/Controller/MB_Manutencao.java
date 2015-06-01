@@ -23,7 +23,7 @@ public class MB_Manutencao {
     private boolean edit = false;
 
     public MB_Manutencao(B_Manutencao manExt, ArrayList<B_Manutencao> mans) {
-        this.man = manExt;
+        this.man = man;
         this.mans = mans;
     }
 
@@ -66,11 +66,11 @@ public class MB_Manutencao {
         this.mans = mans;
     }
 
-    public B_Manutencao getManExt() {
+    public B_Manutencao getMan() {
         return man;
     }
 
-    public void setManExt(B_Manutencao man) {
+    public void setMan(B_Manutencao man) {
         this.man = man;
     }
 

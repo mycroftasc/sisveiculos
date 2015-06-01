@@ -11,7 +11,7 @@
 
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <h1 class="page-header">Marcas</h1>
+                <h1 class="page-header">Modelos</h1>
             </div>
             <!-- /.col-lg-6 col-lg-offset-3 -->
         </div>
@@ -29,15 +29,21 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Marca</label>
-                                        <h:inputText class="form-control" value="#{mbMarc.marc.nome}" />
+                                        <h:selectOneMenu class="form-control">
+                                            <f:selectItem itemValue="0" itemLabel="Selecione a Marca do Veículo"></f:selectItem>
+                                            <f:selectItem itemValue="1" itemLabel="Ford"></f:selectItem>
+                                            <f:selectItem itemValue="2" itemLabel="Fiat"></f:selectItem>
+                                            <f:selectItem itemValue="3" itemLabel="Toyota"></f:selectItem>
+                                            <f:selectItem itemValue="4" itemLabel="Honda"></f:selectItem>
+                                            <f:selectItem itemValue="5" itemLabel="Chevrolet"></f:selectItem>
+                                        </h:selectOneMenu>
                                     </div>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <br/>
-                                        <br/>
-                                        <br/>
+                                        <label>Modelo</label>
+                                        <h:inputText class="form-control" value="#{mbModel.mdl.nome}" />
                                     </div>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
@@ -49,7 +55,7 @@
                                 <!-- /.col-lg-6 (nested) -->
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <h:commandButton class="btn btn-success" pt:data-toggle="modal" pt:data-target="#myModal" value="Enviar" action="#{mbMarc.cadastraEeditaMarca()}"></h:commandButton>   
+                                        <h:commandButton class="btn btn-success" pt:data-toggle="modal" pt:data-target="#myModal" value="Enviar" action="#{mbModel.cadastraEeditaModelo()}"></h:commandButton>   
                                     </div>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->

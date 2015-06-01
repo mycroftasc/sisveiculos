@@ -14,21 +14,21 @@ import javax.persistence.Id;
  *
  * @author JeanCarlo
  */
-@Entity
+@Entity (name = "manutencoes")
 public class B_Manutencao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer idManutencao;
+    private Integer idServico;
     private Integer idVeiculo;
     private String dataManutencao;
     private String kmManutencao;
     private Float valorPeca;
     private Float valorMaoDeObra;
 
-    public B_Manutencao(Integer id, Integer idManutencao, Integer idVeiculo, String dataManutencao, String kmManutencao, Float valorPeca, Float valorMaoDeObra) {
+    public B_Manutencao(Integer id, Integer idServico, Integer idVeiculo, String dataManutencao, String kmManutencao, Float valorPeca, Float valorMaoDeObra) {
         this.id = id;
-        this.idManutencao = idManutencao;
+        this.idServico = idServico;
         this.idVeiculo = idVeiculo;
         this.dataManutencao = dataManutencao;
         this.kmManutencao = kmManutencao;
@@ -47,13 +47,14 @@ public class B_Manutencao {
         this.id = id;
     }
 
-    public Integer getIdManutencao() {
-        return idManutencao;
+    public Integer getIdServico() {
+        return idServico;
     }
 
-    public void setIdManutencao(Integer idManutencao) {
-        this.idManutencao = idManutencao;
+    public void setIdServico(Integer idServico) {
+        this.idServico = idServico;
     }
+
 
     public Integer getIdVeiculo() {
         return idVeiculo;

@@ -14,7 +14,7 @@ import javax.persistence.Id;
  *
  * @author jean.leal
  */
-@Entity
+@Entity (name = "usuarios")
 public class B_Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

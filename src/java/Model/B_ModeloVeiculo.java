@@ -14,19 +14,18 @@ import javax.persistence.Id;
  *
  * @author JeanCarlo
  */
-@Entity
-
+@Entity (name = "modelosVeiculos")
 public class B_ModeloVeiculo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
-    private String descricao;
+    private Integer idMarca;
 
-    public B_ModeloVeiculo(int id, String nome, String descricao) {
+    public B_ModeloVeiculo(int id, String nome, Integer idMarca) {
         this.id = id;
         this.nome = nome;
-        this.descricao = descricao;
+        this.idMarca = idMarca;
     }
 
     public B_ModeloVeiculo() {
@@ -48,11 +47,13 @@ public class B_ModeloVeiculo {
         this.nome = nome;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public Integer getIdMarca() {
+        return idMarca;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setIdMarca(Integer idMarca) {
+        this.idMarca = idMarca;
     }
+
+    
 }
