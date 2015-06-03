@@ -26,7 +26,7 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org
 
       <!-- POSTGRESQL   senac2015 -->
       <!-- MYSQL        vazio (default) -->
-      <property name="javax.persistence.jdbc.password" value="postgres"/>
+      <property name="javax.persistence.jdbc.password" value="admin"/>
 
     </properties>
   </persistence-unit>

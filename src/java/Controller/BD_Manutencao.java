@@ -67,12 +67,12 @@ public class BD_Manutencao {
         }
     }
 
-    public List<B_Manutencao> listar(B_Manutencao u){
+    public List<B_Manutencao> listar(){
      
         try {
             EntityManager entityManager = Conexao.getEntityManager();
 
-            TypedQuery<B_Manutencao> query = entityManager.createNamedQuery("FROM manutencoes m", B_Manutencao.class);
+            TypedQuery<B_Manutencao> query = entityManager.createQuery("SELECT m FROM manutencoes m", B_Manutencao.class);
             
             List<B_Manutencao> listaManutencoes = query.getResultList();
                    
