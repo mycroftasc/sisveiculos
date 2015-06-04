@@ -14,8 +14,9 @@ import javax.persistence.Id;
  *
  * @author jean.leal
  */
-@Entity (name = "usuarios")
+@Entity(name = "usuarios")
 public class B_Usuario {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -84,12 +85,4 @@ public class B_Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
-    @Override
-    public String toString() {
-        return "B_Usuario{" + "id=" + id + ", nome=" + nome + ", dataNascimento=" + dataNascimento + ", sexo=" + sexo + ", email=" + email + ", senha=" + senha + '}';
-    }
-    
-   
-    
 }

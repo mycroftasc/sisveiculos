@@ -7,6 +7,7 @@ package Controller;
 
 import Model.B_TipoVeiculo;
 import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -19,7 +20,7 @@ import javax.faces.bean.SessionScoped;
 public class MB_TipoVeiculo {
     
     private  B_TipoVeiculo tipo;
-    private ArrayList<B_TipoVeiculo> tipos;
+    private List<B_TipoVeiculo> tipos;
     private boolean edit = false;
 
     public MB_TipoVeiculo(B_TipoVeiculo tipo, ArrayList<B_TipoVeiculo> tipos) {
@@ -29,6 +30,8 @@ public class MB_TipoVeiculo {
 
     public MB_TipoVeiculo() {
         tipo = new B_TipoVeiculo();
+        this.tipos = new ArrayList<B_TipoVeiculo>();
+        this.listarTipos();
     }
     
     public void cadastraEeditaTipo(){
@@ -36,12 +39,13 @@ public class MB_TipoVeiculo {
             int index = this.tipos.lastIndexOf(this.tipo);
             this.tipos.set(index, tipo);
             //this.limpaCampos();
+            this.listarTipos();
             this.edit = false;
         } else {
             B_TipoVeiculo t = new B_TipoVeiculo(this.tipo.getId(), this.tipo.getNome());
             BD_TipoVeiculo bdTipo = new BD_TipoVeiculo();
             bdTipo.salvar(t);
-            
+            this.listarTipos();
             //this.limpaCampos();
             this.edit = false;
         }
@@ -57,6 +61,11 @@ public class MB_TipoVeiculo {
         this.tipo = t;
         edit = true;
     }
+    
+    public void listarTipos(){
+        BD_TipoVeiculo bdtipo = new BD_TipoVeiculo();
+        this.tipos = bdtipo.listar();
+    }
 
     public B_TipoVeiculo getTipo() {
         return tipo;
@@ -66,7 +75,7 @@ public class MB_TipoVeiculo {
         this.tipo = tipo;
     }
 
-    public ArrayList<B_TipoVeiculo> getTipos() {
+    public List<B_TipoVeiculo> getTipos() {
         return tipos;
     }
 
