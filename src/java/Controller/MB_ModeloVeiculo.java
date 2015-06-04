@@ -7,6 +7,7 @@ package Controller;
 
 import Model.B_ModeloVeiculo;
 import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -19,18 +20,17 @@ import javax.faces.bean.SessionScoped;
 public class MB_ModeloVeiculo {
     
     private B_ModeloVeiculo mdl;
-    private ArrayList<B_ModeloVeiculo> mdls;
+    private List<B_ModeloVeiculo> mdls;
     private boolean edit = false;
 
     public MB_ModeloVeiculo(B_ModeloVeiculo mdl, ArrayList<B_ModeloVeiculo> mdls) {
         this.mdl = mdl;
         this.mdls = mdls;
     }
-
-    
     
     public MB_ModeloVeiculo() {
         mdl = new B_ModeloVeiculo();
+        this.listarModelo();
     }
     
     
@@ -39,12 +39,13 @@ public class MB_ModeloVeiculo {
             int index = this.mdls.lastIndexOf(this.mdl);
             this.mdls.set(index, mdl);
             //this.limpaCampos();
+            this.listarModelo();
             this.edit = false;
         } else {
             B_ModeloVeiculo m = new B_ModeloVeiculo(this.mdl.getId(), this.mdl.getNome(), 1);
             BD_ModeloVeiculo bdMdl = new BD_ModeloVeiculo();
             bdMdl.salvar(m);
-            
+            this.listarModelo();
             //this.limpaCampos();
             this.edit = false;
         }
@@ -61,7 +62,12 @@ public class MB_ModeloVeiculo {
         edit = true;
     }
     
-    public ArrayList<B_ModeloVeiculo> getMdls() {
+    public void listarModelo(){
+        BD_ModeloVeiculo bdM = new BD_ModeloVeiculo();
+        this.mdls = bdM.listar();
+    }
+    
+    public List<B_ModeloVeiculo> getMdls() {
         return mdls;
     }
 

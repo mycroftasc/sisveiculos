@@ -18,7 +18,7 @@ import javax.persistence.Id;
 public class B_ModeloVeiculo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
     private String nome;
     private Integer idMarca;
 
@@ -30,12 +30,12 @@ public class B_ModeloVeiculo {
 
     public B_ModeloVeiculo() {
     }
-    
-    public Integer getId() {
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -67,12 +67,12 @@ public class BD_ModeloVeiculo {
         }
     }
 
-    public List<B_ModeloVeiculo> listar(B_ModeloVeiculo m){
+    public List<B_ModeloVeiculo> listar(){
      
         try {
             EntityManager entityManager = Conexao.getEntityManager();
 
-            TypedQuery<B_ModeloVeiculo> query = entityManager.createNamedQuery("FROM modelosVeiculos m", B_ModeloVeiculo.class);
+            TypedQuery<B_ModeloVeiculo> query = entityManager.createQuery("SELECT m FROM modelosVeiculos m", B_ModeloVeiculo.class);
             
             List<B_ModeloVeiculo> listaModelosVeiculos = query.getResultList();
                    
