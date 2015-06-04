@@ -15,59 +15,74 @@ import javax.faces.bean.SessionScoped;
  *
  * @author jean.leal
  */
-@ManagedBean (name = "mbSv")
+@ManagedBean(name = "mbSv")
 @SessionScoped
 public class MB_Servico {
 
     private B_Servico sv;
-    private ArrayList<B_Servico> svs;
+    private List<B_Servico> svs;
     private boolean edit = false;
-    
+
     public MB_Servico() {
         sv = new B_Servico();
         svs = new ArrayList<B_Servico>();
+        this.listarServicos();
     }
-    
-    public void cadastraEeditaManutencao() {
+
+    public void cadastraEeditaServico() {
         if (edit) {
             int index = this.svs.lastIndexOf(this.sv);
             this.svs.set(index, sv);
             //this.limpaCampos();
+            this.listarServicos();
             this.edit = false;
         } else {
-            B_Servico v = new B_Servico(this.sv.getId(), this.sv.getNome(), this.sv.getDescricao());
-            BD_Servico bdMan = new BD_Servico();
-            bdMan.salvar(v);
-            
+            B_Servico s = new B_Servico(this.sv.getId(), this.sv.getNome(), this.sv.getDescricao());
+            BD_Servico bdS = new BD_Servico();
+            bdS.salvar(s);
+            this.listarServicos();
             //this.limpaCampos();
             this.edit = false;
         }
     }
-    
-    public void excluiManutencao(B_Servico m){
+
+    public void excluiServico(B_Servico m) {
         this.sv = m;
         int index = this.svs.lastIndexOf(m);
         this.svs.remove(index);
     }
-    
-    public void editaManutencao(B_Servico m){
+
+    public void editaServico(B_Servico m) {
         this.sv = m;
         edit = true;
     }
-    
-    public ArrayList<B_Servico> getMans() {
-        return svs;
+
+    public void listarServicos() {
+        BD_Servico bds = new BD_Servico();
+        this.svs = bds.listar();
     }
 
-    public void setMans(ArrayList<B_Servico> svs) {
-        this.svs = svs;
-    }
-
-    public B_Servico getMan() {
+    public B_Servico getSv() {
         return sv;
     }
 
-    public void setMan(B_Servico sv) {
+    public void setSv(B_Servico sv) {
         this.sv = sv;
+    }
+
+    public List<B_Servico> getSvs() {
+        return svs;
+    }
+
+    public void setSvs(List<B_Servico> svs) {
+        this.svs = svs;
+    }
+
+    public boolean isEdit() {
+        return edit;
+    }
+
+    public void setEdit(boolean edit) {
+        this.edit = edit;
     }
 }

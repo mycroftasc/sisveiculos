@@ -16,14 +16,14 @@ import javax.persistence.TypedQuery;
  */
 public class BD_Servico {
 
-    public void salvar(B_Servico manut) {
+    public void salvar(B_Servico s) {
 
         try {
             EntityManager entityManager = Conexao.getEntityManager();
 
             entityManager.getTransaction().begin();
 
-            entityManager.persist(manut);
+            entityManager.persist(s);
 
             entityManager.getTransaction().commit();
 
@@ -68,12 +68,12 @@ public class BD_Servico {
         }
     }
 
-    public List<B_Servico> listar(B_Servico manut){
+    public List<B_Servico> listar(){
      
         try {
             EntityManager entityManager = Conexao.getEntityManager();
 
-            TypedQuery<B_Servico> query = entityManager.createNamedQuery("FROM manutencoes m", B_Servico.class);
+            TypedQuery<B_Servico> query = entityManager.createQuery("SELECT s FROM servicos s", B_Servico.class);
             
             List<B_Servico> listaManutencoes = query.getResultList();
                    
