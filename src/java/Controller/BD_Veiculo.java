@@ -67,18 +67,18 @@ public class BD_Veiculo {
         }
     }
 
-    public List<B_Veiculo> listar(B_Veiculo v){
+    public List<B_Veiculo> listar(){
      
         try {
             EntityManager entityManager = Conexao.getEntityManager();
 
-            TypedQuery<B_Veiculo> query = entityManager.createNamedQuery("FROM veiculos v", B_Veiculo.class);
+            TypedQuery<B_Veiculo> query = entityManager.createQuery("SELECT v FROM veiculos v", B_Veiculo.class);
             
-            List<B_Veiculo> listaManutencoes = query.getResultList();
+            List<B_Veiculo> listaVeiculos = query.getResultList();
                    
             entityManager.close();
             
-            return listaManutencoes;
+            return listaVeiculos;
         } catch (Exception e) {
             e.printStackTrace();
         }

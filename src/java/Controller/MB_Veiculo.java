@@ -7,6 +7,7 @@ package Controller;
 
 import Model.B_Veiculo;
 import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -19,12 +20,13 @@ import javax.faces.bean.SessionScoped;
 public class MB_Veiculo {
 
     private B_Veiculo veic;
-    private ArrayList<B_Veiculo> veics;
+    private List<B_Veiculo> veics;
     private boolean edit = false;
     
     public MB_Veiculo() {
         veic = new B_Veiculo();
-        veics = new ArrayList<B_Veiculo>();
+        this.veics = new ArrayList<B_Veiculo>();
+        this.listarVeiculo();
     }
     
     public void cadastraEeditaVeiculo() {
@@ -37,6 +39,7 @@ public class MB_Veiculo {
             B_Veiculo v = new B_Veiculo(this.veic.getId(), 1, 1, 1, this.veic.getAnoFabricacao(), this.veic.getAnoModelo(), this.veic.getKm(), this.veic.getCor(), this.veic.getPlaca(), 1);
             BD_Veiculo ve = new BD_Veiculo();
             ve.salvar(v);
+            this.listarVeiculo();
             //this.limpaCampos();
             this.edit = false;
         }
@@ -52,6 +55,11 @@ public class MB_Veiculo {
         this.veic = v;
         edit = true;
     }
+    
+    public void listarVeiculo(){
+        BD_Veiculo bdVeic = new BD_Veiculo();
+        this.veics = bdVeic.listar();
+    }
 
     public B_Veiculo getVeic() {
         return veic;
@@ -61,7 +69,7 @@ public class MB_Veiculo {
         this.veic = veic;
     }
 
-    public ArrayList<B_Veiculo> getVeics() {
+    public List<B_Veiculo> getVeics() {
         return veics;
     }
 

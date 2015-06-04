@@ -100,6 +100,73 @@
                     <!-- /.panel-body -->
                 </div>
                 <!-- /.panel -->
+                <div class="row">
+                    <h:form role="form">
+                        <h:dataTable value="#{mbVeic.veics}" var="v" class="table table-hover table-bordered">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Tipo" />
+                                </f:facet>
+                                <h:outputText value="#{v.idTipo}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Marca" />
+                                </f:facet>
+                                <h:outputText value="#{v.idMarca}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Modelo" />
+                                </f:facet>
+                                <h:outputText value="#{v.idModelo}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Ano Fabricação" />
+                                </f:facet>
+                                <h:outputText value="#{v.anoFabricacao}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Ano Modelo" />
+                                </f:facet>
+                                <h:outputText value="#{v.anoModelo}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Km" />
+                                </f:facet>
+                                <h:outputText value="#{v.km}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Cor" />
+                                </f:facet>
+                                <h:outputText value="#{v.cor}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Placa" />
+                                </f:facet>
+                                <h:outputText value="#{v.placa}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#" />
+                                </f:facet>
+                                <h:commandLink id="editar" action="#{mbMan.editaManutencao(m)}">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                </h:commandLink>
+                                &nbsp;
+                                <h:commandLink id="excluir" action="#{mbMan.excluiManutencao(m)}">
+                                    <span class="glyphicon glyphicon-erase"></span>
+                                </h:commandLink>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+
+                </div>
             </div>
         </div>
     </ui:define>                 
