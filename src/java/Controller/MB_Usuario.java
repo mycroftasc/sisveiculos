@@ -7,6 +7,7 @@ package Controller;
 
 import Model.B_Usuario;
 import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -19,12 +20,13 @@ import javax.faces.bean.SessionScoped;
 public class MB_Usuario {
     
     private B_Usuario user;
-    private ArrayList<B_Usuario> users;
+    private List<B_Usuario> users;
     private boolean edit = false;
 
     public MB_Usuario() {
         this.user = new B_Usuario();
         this.users = new ArrayList<B_Usuario>();
+        this.listarUsuario();
     }
 
     public void cadastraEeditaUsuario() {
@@ -32,12 +34,16 @@ public class MB_Usuario {
             int index = this.users.lastIndexOf(this.user);
             this.users.set(index, user);
             //this.limpaCampos();
+            this.listarUsuario();
             this.edit = false;
         } else {
             B_Usuario u = new B_Usuario(this.user.getId(), this.user.getNome(), this.user.getDataNascimento(), this.user.getSexo(), this.user.getEmail(), this.user.getSenha());
             BD_Usuario bduser = new BD_Usuario();
+            
+            System.out.println("==> " + u);
             bduser.salvar(u);
-
+            
+            this.listarUsuario();
             //this.limpaCampos();
             this.edit = false;
         }
@@ -53,6 +59,11 @@ public class MB_Usuario {
         this.user = u;
         edit = true;
     }
+    
+    public void listarUsuario(){
+        BD_Usuario bdu = new BD_Usuario();
+        this.users = bdu.listar();
+    }
 
     public B_Usuario getUser() {
         return user;
@@ -62,7 +73,7 @@ public class MB_Usuario {
         this.user = user;
     }
 
-    public ArrayList<B_Usuario> getUsers() {
+    public List<B_Usuario> getUsers() {
         return users;
     }
 

@@ -35,14 +35,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Sexo</label>
-                                        <h:inputText class="form-control" value="#{mbUser.user.sexo}"/>
-                                        <h:selectOneRadio>
-                                            <f:selectItem itemValue="m" itemLabel="Masculino"></f:selectItem>
-                                            <f:selectItem itemValue="f" itemLabel="Feminino"></f:selectItem>
+                                        <h:selectOneRadio value="#{mbUser.user.sexo}">
+                                            <f:selectItem itemValue="Masculino" itemLabel="Masculino" ></f:selectItem>
+                                            <f:selectItem itemValue="Feminino" itemLabel="Feminino"></f:selectItem>
                                         </h:selectOneRadio>
                                     </div>
-                                    
-
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
                                 <div class="col-lg-6">
@@ -54,25 +51,17 @@
                                         <label>Senha</label>
                                         <h:inputText class="form-control" pt:step="0.1" value="#{mbUser.user.senha}"/>
                                     </div>
-                                    <div class="form-group">
-                                        <br/>
-                                        <br/>
-                                        <br/>                                                                                
-                                    </div>
-                                    </div>
-                                <!-- /.col-lg-6 (nested) -->
+                                </div>
                                 
-                                <div class="col-lg-6">
-                                    <div class="form-group" align="right">
-                                        
-                                        <h:commandButton pt:type="reset" class="btn btn-warning" value="Limpar"></h:commandButton>
-                                        
-                                    </div>
-                                    </div>
                                 <!-- /.col-lg-6 (nested) -->
+                                <div class="col-lg-6" align="right">
+                                    <div class="form-group">
+                                        <h:commandButton pt:type="reset" class="btn btn-warning" value="Limpar"></h:commandButton>
+                                    </div>
+                                </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <h:commandButton action="#{mbUser.cadastraEeditaUsuario()}" class="btn btn-success" pt:data-toggle="modal" pt:data-target="#myModal" value="Enviar" ></h:commandButton>   
+                                        <h:commandButton class="btn btn-success" pt:data-toggle="modal" pt:data-target="#myModal" value="Enviar" action="#{mbUser.cadastraEeditaUsuario()}"></h:commandButton>   
                                     </div>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
@@ -83,6 +72,49 @@
                     <!-- /.panel-body -->
                 </div>
                 <!-- /.panel -->
+                <div class="row">
+                    <h:form role="form">
+                        <h:dataTable value="#{mbUser.users}" var="u" class="table table-hover table-bordered">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Nome" />
+                                </f:facet>
+                                <h:outputText value="#{u.nome}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Data Nascimento" />
+                                </f:facet>
+                                <h:outputText value="#{u.dataNascimento}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Sexo" />
+                                </f:facet>
+                                <h:outputText value="#{u.sexo}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="E-mail" />
+                                </f:facet>
+                                <h:outputText value="#{u.email}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#" />
+                                </f:facet>
+                                <h:commandLink id="editar" action="#{mbMan.editaManutencao(m)}">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                </h:commandLink>
+                                &nbsp;
+                                <h:commandLink id="excluir" action="#{mbMan.excluiManutencao(m)}">
+                                    <span class="glyphicon glyphicon-erase"></span>
+                                </h:commandLink>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+
+                </div>
             </div>
             <!-- /.col-lg-6 col-lg-offset-3 -->
         </div>

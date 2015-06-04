@@ -84,6 +84,12 @@ public class B_Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    @Override
+    public String toString() {
+        return "B_Usuario{" + "id=" + id + ", nome=" + nome + ", dataNascimento=" + dataNascimento + ", sexo=" + sexo + ", email=" + email + ", senha=" + senha + '}';
+    }
     
+   
     
 }

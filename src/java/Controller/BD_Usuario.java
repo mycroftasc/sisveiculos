@@ -67,12 +67,12 @@ public class BD_Usuario {
         }
     }
 
-    public List<B_Usuario> listar(B_Usuario u){
+    public List<B_Usuario> listar(){
      
         try {
             EntityManager entityManager = Conexao.getEntityManager();
 
-            TypedQuery<B_Usuario> query = entityManager.createNamedQuery("FROM usuarios u", B_Usuario.class);
+            TypedQuery<B_Usuario> query = entityManager.createQuery("SELECT u FROM usuarios u", B_Usuario.class);
             
             List<B_Usuario> listaManutencoes = query.getResultList();
                    
