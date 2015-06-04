@@ -60,6 +60,32 @@
                     <!-- /.panel-body -->
                 </div>
                 <!-- /.panel -->
+
+                <div class="row">
+                    <h:form role="form">
+                        <h:dataTable value="#{mbMarc.marcs}" var="m" class="table table-hover table-bordered">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Marca" />
+                                </f:facet>
+                                <h:outputText value="#{m.nome}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#" />
+                                </f:facet>
+                                <h:commandLink id="editar" action="#{mbMan.editaManutencao(m)}">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                </h:commandLink>
+                                &nbsp;
+                                <h:commandLink id="excluir" action="#{mbMan.excluiManutencao(m)}">
+                                    <span class="glyphicon glyphicon-erase"></span>
+                                </h:commandLink>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+
+                </div>
             </div>
         </div>
     </ui:define>                 

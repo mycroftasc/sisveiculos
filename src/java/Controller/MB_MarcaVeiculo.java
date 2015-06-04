@@ -7,6 +7,7 @@ package Controller;
 
 import Model.B_MarcaVeiculo;
 import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -19,7 +20,7 @@ import javax.faces.bean.SessionScoped;
 public class MB_MarcaVeiculo {
     
     private B_MarcaVeiculo marc;
-    private ArrayList<B_MarcaVeiculo> marcs;
+    private List<B_MarcaVeiculo> marcs;
     private boolean edit = false;
 
     public MB_MarcaVeiculo(B_MarcaVeiculo marc, ArrayList<B_MarcaVeiculo> marcs) {
@@ -29,6 +30,8 @@ public class MB_MarcaVeiculo {
 
     public MB_MarcaVeiculo() {
         marc = new B_MarcaVeiculo();
+        this.marcs = new ArrayList<B_MarcaVeiculo>();
+        this.listarMarcas();
     }
     
     public void cadastraEeditaMarca(){
@@ -36,12 +39,13 @@ public class MB_MarcaVeiculo {
             int index = this.marcs.lastIndexOf(this.marc);
             this.marcs.set(index, marc);
             //this.limpaCampos();
+            this.listarMarcas();
             this.edit = false;
         } else {
             B_MarcaVeiculo m = new B_MarcaVeiculo(this.marc.getId(), this.marc.getNome());
             BD_MarcaVeiculo bdMarc = new BD_MarcaVeiculo();
             bdMarc.salvar(m);
-            
+            this.listarMarcas();
             //this.limpaCampos();
             this.edit = false;
         }
@@ -58,7 +62,12 @@ public class MB_MarcaVeiculo {
         edit = true;
     }
     
-    public ArrayList<B_MarcaVeiculo> getMarcs() {
+    public void listarMarcas(){
+        BD_MarcaVeiculo bdM = new BD_MarcaVeiculo();
+        this.marcs = bdM.listar();
+    }
+    
+    public List<B_MarcaVeiculo> getMarcs() {
         return marcs;
     }
 
