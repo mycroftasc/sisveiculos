@@ -40,7 +40,7 @@ public class BD_MarcaVeiculo {
 
             entityManager.getTransaction().begin();
 
-            entityManager.persist(mrc);
+            entityManager.merge(mrc);
 
             entityManager.getTransaction().commit();
 

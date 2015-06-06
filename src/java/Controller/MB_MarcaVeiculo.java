@@ -36,8 +36,9 @@ public class MB_MarcaVeiculo {
     
     public void cadastraEeditaMarca(){
         if (edit) {
-            int index = this.marcs.lastIndexOf(this.marc);
-            this.marcs.set(index, marc);
+            B_MarcaVeiculo m = new B_MarcaVeiculo(this.marc.getId(), this.marc.getNome());
+            BD_MarcaVeiculo bdMarc = new BD_MarcaVeiculo();
+            bdMarc.editar(m);
             this.listarMarcas();
             this.edit = false;
         } else {
@@ -55,7 +56,7 @@ public class MB_MarcaVeiculo {
         this.listarMarcas();
     }
     
-    public void editaManutencao(B_MarcaVeiculo m){
+    public void editaMarca(B_MarcaVeiculo m){
         this.marc = m;
         edit = true;
     }

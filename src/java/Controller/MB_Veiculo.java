@@ -31,8 +31,9 @@ public class MB_Veiculo {
 
     public void cadastraEeditaVeiculo() {
         if (edit) {
-            int index = this.veics.lastIndexOf(this.veic);
-            this.veics.set(index, veic);
+            B_Veiculo v = new B_Veiculo(this.veic.getId(), 1, 1, 1, this.veic.getAnoFabricacao(), this.veic.getAnoModelo(), this.veic.getKm(), this.veic.getCor(), this.veic.getPlaca(), 1);
+            BD_Veiculo bdv = new BD_Veiculo();
+            bdv.editar(v);
             this.listarVeiculo();
             this.edit = false;
         } else {

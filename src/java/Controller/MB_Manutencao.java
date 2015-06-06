@@ -37,8 +37,9 @@ public class MB_Manutencao {
     
     public void cadastraEeditaManutencao() {
         if (edit) {
-            int index = this.mans.lastIndexOf(this.man);
-            this.mans.set(index, man);
+            B_Manutencao m = new B_Manutencao(this.man.getId(), 1, 1, this.man.getDataManutencao(), this.man.getKmManutencao(), this.man.getValorPeca(), this.man.getValorMaoDeObra());
+            BD_Manutencao bdMan = new BD_Manutencao();
+            bdMan.editar(m);
             this.edit = false;
         } else {
             B_Manutencao m = new B_Manutencao(this.man.getId(), 1, 1, this.man.getDataManutencao(), this.man.getKmManutencao(), this.man.getValorPeca(), this.man.getValorMaoDeObra());

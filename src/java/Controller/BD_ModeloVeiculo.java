@@ -40,7 +40,7 @@ public class BD_ModeloVeiculo {
 
             entityManager.getTransaction().begin();
 
-            entityManager.persist(mdl);
+            entityManager.merge(mdl);
 
             entityManager.getTransaction().commit();
 

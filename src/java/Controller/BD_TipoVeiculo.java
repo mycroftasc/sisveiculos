@@ -40,7 +40,7 @@ public class BD_TipoVeiculo {
 
             entityManager.getTransaction().begin();
 
-            entityManager.persist(tp);
+            entityManager.merge(tp);
 
             entityManager.getTransaction().commit();
 

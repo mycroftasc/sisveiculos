@@ -36,8 +36,9 @@ public class MB_TipoVeiculo {
     
     public void cadastraEeditaTipo(){
         if (edit) {
-            int index = this.tipos.lastIndexOf(this.tipo);
-            this.tipos.set(index, tipo);
+            B_TipoVeiculo t = new B_TipoVeiculo(this.tipo.getId(), this.tipo.getNome());
+            BD_TipoVeiculo bdTipo = new BD_TipoVeiculo();
+            bdTipo.editar(t);
             this.listarTipos();
             this.edit = false;
         } else {

@@ -40,7 +40,7 @@ public class BD_Manutencao {
 
             entityManager.getTransaction().begin();
 
-            entityManager.persist(mnt);
+            entityManager.merge(mnt);
 
             entityManager.getTransaction().commit();
 

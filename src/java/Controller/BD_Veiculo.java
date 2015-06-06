@@ -41,7 +41,7 @@ public class BD_Veiculo {
 
             entityManager.getTransaction().begin();
 
-            entityManager.persist(v);
+            entityManager.merge(v);
 
             entityManager.getTransaction().commit();
 

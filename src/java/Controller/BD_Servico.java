@@ -41,7 +41,7 @@ public class BD_Servico {
 
             entityManager.getTransaction().begin();
 
-            entityManager.persist(manut);
+            entityManager.merge(manut);
 
             entityManager.getTransaction().commit();
 

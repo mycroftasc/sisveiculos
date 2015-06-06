@@ -31,15 +31,14 @@ public class MB_Usuario {
 
     public void cadastraEeditaUsuario() {
         if (edit) {
-            int index = this.users.lastIndexOf(this.user);
-            this.users.set(index, user);
+            B_Usuario u = new B_Usuario(this.user.getId(), this.user.getNome(), this.user.getDataNascimento(), this.user.getSexo(), this.user.getEmail(), this.user.getSenha());
+            BD_Usuario bduser = new BD_Usuario();
+            bduser.editar(u);
             this.listarUsuario();
             this.edit = false;
         } else {
             B_Usuario u = new B_Usuario(this.user.getId(), this.user.getNome(), this.user.getDataNascimento(), this.user.getSexo(), this.user.getEmail(), this.user.getSenha());
             BD_Usuario bduser = new BD_Usuario();
-            
-            System.out.println("==> " + u);
             bduser.salvar(u);
             
             this.listarUsuario();

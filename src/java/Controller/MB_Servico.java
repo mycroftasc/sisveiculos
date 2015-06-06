@@ -31,8 +31,9 @@ public class MB_Servico {
 
     public void cadastraEeditaServico() {
         if (edit) {
-            int index = this.svs.lastIndexOf(this.sv);
-            this.svs.set(index, sv);
+            B_Servico s = new B_Servico(this.sv.getId(), this.sv.getNome(), this.sv.getDescricao());
+            BD_Servico bdS = new BD_Servico();
+            bdS.editar(s);
             this.listarServicos();
             this.edit = false;
         } else {
@@ -50,8 +51,8 @@ public class MB_Servico {
         this.listarServicos();
     }
 
-    public void editaServico(B_Servico m) {
-        this.sv = m;
+    public void editaServico(B_Servico s) {
+        this.sv = s;
         edit = true;
     }
 

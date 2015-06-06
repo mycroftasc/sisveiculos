@@ -40,7 +40,7 @@ public class BD_Usuario {
 
             entityManager.getTransaction().begin();
 
-            entityManager.persist(u);
+            entityManager.merge(u);
 
             entityManager.getTransaction().commit();
 

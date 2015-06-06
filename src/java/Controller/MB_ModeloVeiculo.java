@@ -37,8 +37,9 @@ public class MB_ModeloVeiculo {
     
     public void cadastraEeditaModelo(){
         if (edit) {
-            int index = this.mdls.lastIndexOf(this.mdl);
-            this.mdls.set(index, mdl);
+            B_ModeloVeiculo m = new B_ModeloVeiculo(this.mdl.getId(), this.mdl.getNome(), 1);
+            BD_ModeloVeiculo bdMdl = new BD_ModeloVeiculo();
+            bdMdl.editar(m);
             this.listarModelo();
             this.edit = false;
         } else {
