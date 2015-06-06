@@ -19,7 +19,7 @@ public class B_Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String nome;
     private String dataNascimento;
     private String sexo;
@@ -29,7 +29,7 @@ public class B_Usuario {
     public B_Usuario() {
     }
 
-    public B_Usuario(int id, String nome, String dataNascimento, String sexo, String email, String senha) {
+    public B_Usuario(Integer id, String nome, String dataNascimento, String sexo, String email, String senha) {
         this.id = id;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
@@ -38,11 +38,11 @@ public class B_Usuario {
         this.senha = senha;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

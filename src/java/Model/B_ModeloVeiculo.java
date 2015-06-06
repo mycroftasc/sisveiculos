@@ -18,11 +18,11 @@ import javax.persistence.Id;
 public class B_ModeloVeiculo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String nome;
     private Integer idMarca;
 
-    public B_ModeloVeiculo(int id, String nome, Integer idMarca) {
+    public B_ModeloVeiculo(Integer id, String nome, Integer idMarca) {
         this.id = id;
         this.nome = nome;
         this.idMarca = idMarca;
@@ -31,11 +31,11 @@ public class B_ModeloVeiculo {
     public B_ModeloVeiculo() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

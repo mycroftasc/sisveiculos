@@ -8,6 +8,7 @@ package Controller;
 import Model.B_Usuario;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
@@ -54,13 +55,10 @@ public class BD_Usuario {
 
         try {
             EntityManager entityManager = Conexao.getEntityManager();
-
             entityManager.getTransaction().begin();
-
-            entityManager.persist(u);
-
+            Query query = entityManager.createQuery("DELETE FROM usuarios u WHERE u.id = :n");
+            int deletedCount = query.setParameter("n", u.getId()).executeUpdate();
             entityManager.getTransaction().commit();
-
             entityManager.close();
         } catch (Exception e) {
             e.printStackTrace();

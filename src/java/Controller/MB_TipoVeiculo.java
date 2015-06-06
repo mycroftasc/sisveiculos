@@ -38,7 +38,6 @@ public class MB_TipoVeiculo {
         if (edit) {
             int index = this.tipos.lastIndexOf(this.tipo);
             this.tipos.set(index, tipo);
-            //this.limpaCampos();
             this.listarTipos();
             this.edit = false;
         } else {
@@ -46,25 +45,31 @@ public class MB_TipoVeiculo {
             BD_TipoVeiculo bdTipo = new BD_TipoVeiculo();
             bdTipo.salvar(t);
             this.listarTipos();
-            //this.limpaCampos();
             this.edit = false;
         }
     }
     
-    public void excluiManutencao(B_TipoVeiculo t){
-        this.tipo = t;
-        int index = this.tipos.lastIndexOf(t);
-        this.tipos.remove(index);
+    public void excluiTipo(B_TipoVeiculo t){
+        BD_TipoVeiculo bdt = new BD_TipoVeiculo();
+        bdt.excluir(t);
+        this.listarTipos();
     }
     
-    public void editaManutencao(B_TipoVeiculo t){
+    public void editaTipo(B_TipoVeiculo t){
         this.tipo = t;
         edit = true;
     }
     
     public void listarTipos(){
+        this.limpar();
         BD_TipoVeiculo bdtipo = new BD_TipoVeiculo();
         this.tipos = bdtipo.listar();
+    }
+    
+    public void limpar(){
+        this.tipos.clear();
+        this.tipo.setId(null);
+        this.tipo.setNome(null);
     }
 
     public B_TipoVeiculo getTipo() {

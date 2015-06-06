@@ -33,7 +33,6 @@ public class MB_Usuario {
         if (edit) {
             int index = this.users.lastIndexOf(this.user);
             this.users.set(index, user);
-            //this.limpaCampos();
             this.listarUsuario();
             this.edit = false;
         } else {
@@ -44,15 +43,14 @@ public class MB_Usuario {
             bduser.salvar(u);
             
             this.listarUsuario();
-            //this.limpaCampos();
             this.edit = false;
         }
     }
 
     public void excluiUsuario(B_Usuario user) {
-        this.user = user;
-        int index = this.users.lastIndexOf(user);
-        this.users.remove(index);
+        BD_Usuario bdu = new BD_Usuario();
+        bdu.excluir(user);
+        this.listarUsuario();
     }
 
     public void editaUsuario(B_Usuario u) {
@@ -61,8 +59,19 @@ public class MB_Usuario {
     }
     
     public void listarUsuario(){
+        this.limpar();
         BD_Usuario bdu = new BD_Usuario();
         this.users = bdu.listar();
+    }
+    
+    public void limpar(){
+        this.users.clear();
+        this.user.setDataNascimento(null);
+        this.user.setEmail(null);
+        this.user.setId(null);
+        this.user.setNome(null);
+        this.user.setSenha(null);
+        this.user.setSexo(null);
     }
 
     public B_Usuario getUser() {

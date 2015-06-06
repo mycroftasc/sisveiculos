@@ -38,7 +38,6 @@ public class MB_MarcaVeiculo {
         if (edit) {
             int index = this.marcs.lastIndexOf(this.marc);
             this.marcs.set(index, marc);
-            //this.limpaCampos();
             this.listarMarcas();
             this.edit = false;
         } else {
@@ -46,15 +45,14 @@ public class MB_MarcaVeiculo {
             BD_MarcaVeiculo bdMarc = new BD_MarcaVeiculo();
             bdMarc.salvar(m);
             this.listarMarcas();
-            //this.limpaCampos();
             this.edit = false;
         }
     }
     
-    public void excluiManutencao(B_MarcaVeiculo m){
-        this.marc = m;
-        int index = this.marcs.lastIndexOf(m);
-        this.marcs.remove(index);
+    public void excluiMarca(B_MarcaVeiculo m){
+        BD_MarcaVeiculo bdm = new BD_MarcaVeiculo();
+        bdm.excluir(m);
+        this.listarMarcas();
     }
     
     public void editaManutencao(B_MarcaVeiculo m){
@@ -63,8 +61,15 @@ public class MB_MarcaVeiculo {
     }
     
     public void listarMarcas(){
+        this.limpar();
         BD_MarcaVeiculo bdM = new BD_MarcaVeiculo();
         this.marcs = bdM.listar();
+    }
+    
+    public void limpar(){
+        this.marcs.clear();
+        this.marc.setId(null);
+        this.marc.setNome(null);
     }
     
     public List<B_MarcaVeiculo> getMarcs() {

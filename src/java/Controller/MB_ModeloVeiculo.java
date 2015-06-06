@@ -30,6 +30,7 @@ public class MB_ModeloVeiculo {
     
     public MB_ModeloVeiculo() {
         mdl = new B_ModeloVeiculo();
+        this.mdls = new ArrayList<B_ModeloVeiculo>();
         this.listarModelo();
     }
     
@@ -38,7 +39,6 @@ public class MB_ModeloVeiculo {
         if (edit) {
             int index = this.mdls.lastIndexOf(this.mdl);
             this.mdls.set(index, mdl);
-            //this.limpaCampos();
             this.listarModelo();
             this.edit = false;
         } else {
@@ -46,15 +46,14 @@ public class MB_ModeloVeiculo {
             BD_ModeloVeiculo bdMdl = new BD_ModeloVeiculo();
             bdMdl.salvar(m);
             this.listarModelo();
-            //this.limpaCampos();
             this.edit = false;
         }
     }
     
     public void excluiModelo(B_ModeloVeiculo m){
-        this.mdl = m;
-        int index = this.mdls.lastIndexOf(m);
-        this.mdls.remove(index);
+        BD_ModeloVeiculo bdm = new BD_ModeloVeiculo();
+        bdm.excluir(m);
+        this.listarModelo();
     }
     
     public void editaModelo(B_ModeloVeiculo m){
@@ -63,8 +62,16 @@ public class MB_ModeloVeiculo {
     }
     
     public void listarModelo(){
+        this.limpar();
         BD_ModeloVeiculo bdM = new BD_ModeloVeiculo();
         this.mdls = bdM.listar();
+    }
+    
+    public void limpar(){
+        this.mdls.clear();
+        this.mdl.setId(null);
+        this.mdl.setIdMarca(null);
+        this.mdl.setNome(null);
     }
     
     public List<B_ModeloVeiculo> getMdls() {

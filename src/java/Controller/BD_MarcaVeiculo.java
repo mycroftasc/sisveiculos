@@ -8,6 +8,7 @@ package Controller;
 import Model.B_MarcaVeiculo;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
@@ -54,13 +55,10 @@ public class BD_MarcaVeiculo {
 
         try {
             EntityManager entityManager = Conexao.getEntityManager();
-
             entityManager.getTransaction().begin();
-
-            entityManager.persist(mrc);
-
+            Query query = entityManager.createQuery("DELETE FROM marcasVeiculos mrc WHERE mrc.id = :n");
+            int deletedCount = query.setParameter("n", mrc.getId()).executeUpdate();
             entityManager.getTransaction().commit();
-
             entityManager.close();
         } catch (Exception e) {
             e.printStackTrace();

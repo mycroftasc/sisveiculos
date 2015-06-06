@@ -8,6 +8,7 @@ package Controller;
 import Model.B_Servico;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
@@ -51,17 +52,14 @@ public class BD_Servico {
 
     }
 
-    public void excluir(B_Servico manut) {
+    public void excluir(B_Servico s) {
 
         try {
             EntityManager entityManager = Conexao.getEntityManager();
-
             entityManager.getTransaction().begin();
-
-            entityManager.persist(manut);
-
+            Query query = entityManager.createQuery("DELETE FROM servicos s WHERE s.id = :n");
+            int deletedCount = query.setParameter("n", s.getId()).executeUpdate();
             entityManager.getTransaction().commit();
-
             entityManager.close();
         } catch (Exception e) {
             e.printStackTrace();

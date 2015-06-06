@@ -33,7 +33,6 @@ public class MB_Servico {
         if (edit) {
             int index = this.svs.lastIndexOf(this.sv);
             this.svs.set(index, sv);
-            //this.limpaCampos();
             this.listarServicos();
             this.edit = false;
         } else {
@@ -41,15 +40,14 @@ public class MB_Servico {
             BD_Servico bdS = new BD_Servico();
             bdS.salvar(s);
             this.listarServicos();
-            //this.limpaCampos();
             this.edit = false;
         }
     }
 
-    public void excluiServico(B_Servico m) {
-        this.sv = m;
-        int index = this.svs.lastIndexOf(m);
-        this.svs.remove(index);
+    public void excluiServico(B_Servico s) {
+        BD_Servico bds = new BD_Servico();
+        bds.excluir(s);
+        this.listarServicos();
     }
 
     public void editaServico(B_Servico m) {
@@ -58,8 +56,16 @@ public class MB_Servico {
     }
 
     public void listarServicos() {
+        this.limpar();
         BD_Servico bds = new BD_Servico();
         this.svs = bds.listar();
+    }
+    
+    public void limpar(){
+        this.svs.clear();
+        this.sv.setDescricao(null);
+        this.sv.setId(null);
+        this.sv.setNome(null);
     }
 
     public B_Servico getSv() {

@@ -39,22 +39,20 @@ public class MB_Manutencao {
         if (edit) {
             int index = this.mans.lastIndexOf(this.man);
             this.mans.set(index, man);
-            //this.limpaCampos();
             this.edit = false;
         } else {
             B_Manutencao m = new B_Manutencao(this.man.getId(), 1, 1, this.man.getDataManutencao(), this.man.getKmManutencao(), this.man.getValorPeca(), this.man.getValorMaoDeObra());
             BD_Manutencao bdMan = new BD_Manutencao();
             bdMan.salvar(m);
             this.listarManutencao();
-            //this.limpaCampos();
             this.edit = false;
         }
     }
     
     public void excluiManutencao(B_Manutencao m){
-        this.man = m;
-        int index = this.mans.lastIndexOf(m);
-        this.mans.remove(index);
+        BD_Manutencao bdm = new BD_Manutencao();
+        bdm.excluir(m);
+        this.listarManutencao();
     }
     
     public void editaManutencao(B_Manutencao m){
@@ -63,8 +61,20 @@ public class MB_Manutencao {
     }
     
     public void listarManutencao(){
+        this.limpar();
         BD_Manutencao bdman = new BD_Manutencao();
         this.mans = bdman.listar();
+    }
+    
+    public void limpar(){
+        this.mans.clear();
+        this.man.setDataManutencao(null);
+        this.man.setId(null);
+        this.man.setIdServico(null);
+        this.man.setIdVeiculo(null);
+        this.man.setKmManutencao(null);
+        this.man.setValorMaoDeObra(null);
+        this.man.setValorPeca(null);
     }
     
     public List<B_Manutencao> getMans() {
