@@ -59,36 +59,41 @@
                     <!-- /.panel-body -->
                 </div>
                 <!-- /.panel -->
-                <div class="row">
-                    <h:form role="form">
-                        <h:dataTable value="#{mbSv.svs}" var="s" class="table table-hover table-bordered">
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Nome" />
-                                </f:facet>
-                                <h:outputText value="#{s.nome}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Descrição" />
-                                </f:facet>
-                                <h:outputText value="#{s.descricao}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#" />
-                                </f:facet>
-                                <h:commandLink id="editar" action="#{mbSv.editaServico(s)}">
-                                    <span class="glyphicon glyphicon-edit"></span>
-                                </h:commandLink>
-                                &nbsp;
-                                <h:commandLink id="excluir" action="#{mbSv.excluiServico(s)}">
-                                    <span class="glyphicon glyphicon-erase"></span>
-                                </h:commandLink>
-                            </h:column>
-                        </h:dataTable>
-                    </h:form>
 
+            </div>
+            <div class="col-lg-8 col-lg-offset-2">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <h:form role="form">
+                            <h:dataTable value="#{mbSv.svs}" var="s" class="table table-hover table-bordered">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Nome" />
+                                    </f:facet>
+                                    <h:outputText value="#{s.nome}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Descrição" />
+                                    </f:facet>
+                                    <h:outputText value="#{s.descricao}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#" />
+                                    </f:facet>
+                                    <h:commandLink id="editar" action="#{mbSv.editaServico(s)}">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                    </h:commandLink>
+                                    &nbsp;
+                                    <h:commandLink id="excluir" action="#{mbSv.excluiServico(s)}">
+                                        <span class="glyphicon glyphicon-erase"></span>
+                                    </h:commandLink>
+                                </h:column>
+                            </h:dataTable>
+                        </h:form>
+
+                    </div>    
                 </div>
             </div>
         </div>

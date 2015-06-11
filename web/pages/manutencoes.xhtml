@@ -12,7 +12,7 @@
             <div class="col-lg-8 col-lg-offset-2">
                 <h1 class="page-header">Manutenções</h1>
             </div>
-            <!-- /.col-lg-6 col-lg-offset-3 -->
+            <!-- /.col-lg-8 col-lg-offset-2 -->
         </div>
         <!-- /.row -->
         <div class="row">
@@ -75,7 +75,6 @@
                                         <h:commandButton class="btn btn-success" pt:data-toggle="modal" pt:data-target="#myModal" value="Enviar" action="#{mbMan.cadastraEeditaManutencao()}"></h:commandButton>   
                                     </div>
                                 </div>
-
                                 <!-- /.col-lg-6 (nested) -->
                             </h:form>
                         </div>
@@ -84,57 +83,65 @@
                     <!-- /.panel-body -->
                 </div>
                 <!-- /.panel -->
-                <div class="row">
-                    <h:form role="form">
-                        <h:dataTable value="#{mbMan.mans}" var="m" class="table table-hover table-bordered">
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Nome" />
-                                </f:facet>
-                                <h:outputText value="#{m.idServico}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Dt. Manutenção" />
-                                </f:facet>
-                                <h:outputText value="#{m.dataManutencao}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Km. Manutenção" />
-                                </f:facet>
-                                <h:outputText value="#{m.kmManutencao}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Valor Peça" />
-                                </f:facet>
-                                <h:outputText value="#{m.valorPeca}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Valor M. Obra" />
-                                </f:facet>
-                                <h:outputText value="#{m.valorMaoDeObra}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#" />
-                                </f:facet>
-                                <h:commandLink id="editar" action="#{mbMan.editaManutencao(m)}">
-                                    <span class="glyphicon glyphicon-edit"></span>
-                                </h:commandLink>
-                                &nbsp;
-                                <h:commandLink id="excluir" action="#{mbMan.excluiManutencao(m)}">
-                                    <span class="glyphicon glyphicon-erase"></span>
-                                </h:commandLink>
-                            </h:column>
-                        </h:dataTable>
-                    </h:form>
-                </div>
             </div>
-            <!-- /.col-lg-6 col-lg-offset-3 -->
+            <!-- /.col-lg-8 col-lg-offset-2 -->
+            <div class="col-lg-8 col-lg-offset-2">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <h:form role="form">
+                            <h:dataTable value="#{mbMan.mans}" var="m" class="table table-hover table-bordered">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Nome" />
+                                    </f:facet>
+                                    <h:outputText value="#{m.idServico}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Dt. Manutenção" />
+                                    </f:facet>
+                                    <h:outputText value="#{m.dataManutencao}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Km. Manutenção" />
+                                    </f:facet>
+                                    <h:outputText value="#{m.kmManutencao}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Valor Peça" />
+                                    </f:facet>
+                                    <h:outputText value="#{m.valorPeca}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Valor M. Obra" />
+                                    </f:facet>
+                                    <h:outputText value="#{m.valorMaoDeObra}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#" />
+                                    </f:facet>
+                                    <h:commandLink id="editar" action="#{mbMan.editaManutencao(m)}">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                    </h:commandLink>
+                                    &nbsp;
+                                    <h:commandLink id="excluir" action="#{mbMan.excluiManutencao(m)}">
+                                        <span class="glyphicon glyphicon-erase"></span>
+                                    </h:commandLink>
+                                </h:column>
+                            </h:dataTable>
+                        </h:form>
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.col-lg-8 col-lg-offset-2 -->
         </div>
+        <!-- /.row -->
     </ui:define>                 
 
 </ui:composition>

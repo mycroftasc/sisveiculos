@@ -8,7 +8,7 @@ and open the template in the editor.
     Author     : mycroft
 */
 
-html{
-     background: url("../pages/img/roads.jpg") no-repeat center center fixed; 
-
+body{
+     background: url("../pages/img/roads.jpg") no-repeat center center fixed;
+  
 }

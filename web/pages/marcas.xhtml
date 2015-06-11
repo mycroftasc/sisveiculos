@@ -60,31 +60,34 @@
                     <!-- /.panel-body -->
                 </div>
                 <!-- /.panel -->
+            </div>
+            <div class="col-lg-8 col-lg-offset-2">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <h:form role="form">
+                            <h:dataTable value="#{mbMarc.marcs}" var="m" class="table table-hover table-bordered">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Marca" />
+                                    </f:facet>
+                                    <h:outputText value="#{m.nome}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#" />
+                                    </f:facet>
+                                    <h:commandLink id="editar" action="#{mbMarc.editaMarca(m)}">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                    </h:commandLink>
+                                    &nbsp;
+                                    <h:commandLink id="excluir" action="#{mbMarc.excluiMarca(m)}">
+                                        <span class="glyphicon glyphicon-erase"></span>
+                                    </h:commandLink>
+                                </h:column>
+                            </h:dataTable>
+                        </h:form>
 
-                <div class="row">
-                    <h:form role="form">
-                        <h:dataTable value="#{mbMarc.marcs}" var="m" class="table table-hover table-bordered">
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Marca" />
-                                </f:facet>
-                                <h:outputText value="#{m.nome}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#" />
-                                </f:facet>
-                                <h:commandLink id="editar" action="#{mbMarc.editaMarca(m)}">
-                                    <span class="glyphicon glyphicon-edit"></span>
-                                </h:commandLink>
-                                &nbsp;
-                                <h:commandLink id="excluir" action="#{mbMarc.excluiMarca(m)}">
-                                    <span class="glyphicon glyphicon-erase"></span>
-                                </h:commandLink>
-                            </h:column>
-                        </h:dataTable>
-                    </h:form>
-
+                    </div> 
                 </div>
             </div>
         </div>
