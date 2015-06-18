@@ -17,7 +17,7 @@
       <property name="javax.persistence.jdbc.user" value="postgres"/>
       <!-- POSTGRESQL   senac2015 -->
       <!-- MYSQL        vazio (default) -->
-      <property name="javax.persistence.jdbc.password" value="senac2015"/>
+      <property name="javax.persistence.jdbc.password" value="admin"/>
     </properties>
   </persistence-unit>
 </persistence>

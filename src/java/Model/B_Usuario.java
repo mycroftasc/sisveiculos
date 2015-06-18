@@ -25,17 +25,28 @@ public class B_Usuario {
     private String sexo;
     private String email;
     private String senha;
+    private String cep;
+    private String bairro;
+    private String cidade;
+    private String endereco;
+    private String estado;
+    
 
     public B_Usuario() {
     }
 
-    public B_Usuario(Integer id, String nome, String dataNascimento, String sexo, String email, String senha) {
+    public B_Usuario(Integer id, String nome, String dataNascimento, String sexo, String email, String senha, String cep, String estado, String cidade, String bairro, String endereco) {
         this.id = id;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.sexo = sexo;
         this.email = email;
         this.senha = senha;
+        this.cep = cep;
+        this.estado = estado;
+        this.cidade = cidade;
+        this.bairro = bairro;
+        this.endereco = endereco;
     }
 
     public Integer getId() {
@@ -85,4 +96,45 @@ public class B_Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    
 }
