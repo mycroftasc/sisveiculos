@@ -41,6 +41,9 @@
                                         </h:selectOneRadio>
                                     </div>
                                     <div class="form-group">
+                                        <br />
+                                    </div>
+                                    <div class="form-group">
                                         <label>Estado</label>
                                         <h:inputText class="form-control" pt:step="0.1" pt:disabled="disabled" value="#{mbUser.user.estado}"/>
                                     </div>
@@ -57,12 +60,12 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Senha</label>
-                                        <h:inputText class="form-control" pt:step="0.1" value="#{mbUser.user.senha}"/>
+                                        <h:inputSecret class="form-control" pt:step="0.1" value="#{mbUser.user.senha}"/>
                                     </div>
                                     <div class="form-group">
                                         <label>CEP</label>
                                         <h:inputText class="form-control" pt:step="0.1" value="#{mbUser.user.cep}"/>
-                                        <h:commandButton value="Buscar CEP" action="#{mbUser.buscaCep()}"/>
+                                        <h:commandButton class="btn btn-success" value="Buscar CEP" action="#{mbUser.buscaCep()}"/>
                                     </div>
                                     <div class="form-group">
                                         <label>Cidade</label>
@@ -72,13 +75,19 @@
                                         <label>Endereço</label>
                                         <h:inputText class="form-control" pt:step="0.1" pt:disabled="disabled" value="#{mbUser.user.endereco}"/>
                                     </div>
+
+                                </div>
+                                <div class="col-lg-6" align="right">
                                     <div class="form-group">
-                                        <h:commandButton pt:type="reset" class="btn btn-warning" value="Limpar"></h:commandButton>
-                                        &nbsp;&nbsp;&nbsp;
+                                        <h:commandButton pt:type="reset" class="btn btn-warning" value="Limpar" action="#{mbUser.limpar()}"></h:commandButton>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
                                         <h:commandButton class="btn btn-success" pt:data-toggle="modal" pt:data-target="#myModal" value="Enviar" action="#{mbUser.cadastraEeditaUsuario()}"></h:commandButton>   
                                     </div>
                                 </div>
-                                
+
                                 <!-- /.col-lg-6 (nested) -->
                             </h:form>
                         </div>
@@ -87,82 +96,86 @@
                     <!-- /.panel-body -->
                 </div>
                 <!-- /.panel -->
-                <div class="row">
-                    <h:form role="form">
-                        <h:dataTable value="#{mbUser.users}" var="u" class="table table-hover table-bordered">
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Nome" />
-                                </f:facet>
-                                <h:outputText value="#{u.nome}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Data Nascimento" />
-                                </f:facet>
-                                <h:outputText value="#{u.dataNascimento}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Sexo" />
-                                </f:facet>
-                                <h:outputText value="#{u.sexo}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="E-mail" />
-                                </f:facet>
-                                <h:outputText value="#{u.email}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="CEP" />
-                                </f:facet>
-                                <h:outputText value="#{u.cep}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Estado" />
-                                </f:facet>
-                                <h:outputText value="#{u.estado}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Cidade" />
-                                </f:facet>
-                                <h:outputText value="#{u.cidade}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Bairro" />
-                                </f:facet>
-                                <h:outputText value="#{u.bairro}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Endereço" />
-                                </f:facet>
-                                <h:outputText value="#{u.endereco}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#" />
-                                </f:facet>
-                                <h:commandLink id="editar" action="#{mbUser.editaUsuario(u)}">
-                                    <span class="glyphicon glyphicon-edit"></span>
-                                </h:commandLink>
-                                &nbsp;
-                                <h:commandLink id="excluir" action="#{mbUser.excluiUsuario(u)}">
-                                    <span class="glyphicon glyphicon-erase"></span>
-                                </h:commandLink>
-                            </h:column>
-                        </h:dataTable>
-                    </h:form>
-
-                </div>
             </div>
-            <!-- /.col-lg-6 col-lg-offset-3 -->
-        </div>
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <h:form role="form">
+                                <h:dataTable value="#{mbUser.users}" var="u" class="table table-hover table-bordered">
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Nome" />
+                                        </f:facet>
+                                        <h:outputText value="#{u.nome}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Data Nascimento" />
+                                        </f:facet>
+                                        <h:outputText value="#{u.dataNascimento}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Sexo" />
+                                        </f:facet>
+                                        <h:outputText value="#{u.sexo}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="E-mail" />
+                                        </f:facet>
+                                        <h:outputText value="#{u.email}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="CEP" />
+                                        </f:facet>
+                                        <h:outputText value="#{u.cep}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Estado" />
+                                        </f:facet>
+                                        <h:outputText value="#{u.estado}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Cidade" />
+                                        </f:facet>
+                                        <h:outputText value="#{u.cidade}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Bairro" />
+                                        </f:facet>
+                                        <h:outputText value="#{u.bairro}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Endereço" />
+                                        </f:facet>
+                                        <h:outputText value="#{u.endereco}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#" />
+                                        </f:facet>
+                                        <h:commandLink id="editar" action="#{mbUser.editaUsuario(u)}">
+                                            <span class="glyphicon glyphicon-edit"></span>
+                                        </h:commandLink>
+                                        &nbsp;
+                                        <h:commandLink id="excluir" action="#{mbUser.excluiUsuario(u)}">
+                                            <span class="glyphicon glyphicon-erase"></span>
+                                        </h:commandLink>
+                                    </h:column>
+                                </h:dataTable>
+                            </h:form>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-lg-6 col-lg-offset-3 -->
+            </div>
     </ui:define>                 
 
 </ui:composition>
